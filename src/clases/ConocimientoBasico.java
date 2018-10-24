@@ -1,7 +1,5 @@
 package clases;
 
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-
 import interfaces.NivelDeConocimiento;
 
 public class ConocimientoBasico implements NivelDeConocimiento {
