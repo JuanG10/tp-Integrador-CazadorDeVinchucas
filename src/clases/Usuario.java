@@ -7,17 +7,22 @@ import java.util.ArrayList;
 public abstract class Usuario {
 	
 	private String alias;
+	private SistemaWeb unSistemaWeb;
 	//SACAR DE UML muestrasEnviadas Y REVISAR muestrasVerificadas DAME MAYUSCULAS MAS GRANDESSSS
 	
 	
-	public Usuario(String alias) {
+	public Usuario(String alias, SistemaWeb sistema) {
 		this.alias = alias;
+		this.unSistemaWeb = sistema;
 	}
 	
 	
 	
 	public void enviarMuestra(BufferedImage foto, String tipoDeVinchuca, String aliasUsuario,Ubicacion ubicacion, LocalDate fecha ) {
 		
+		Muestras muestra = new Muestras(aliasUsuario, ubicacion, tipoDeVinchuca, fecha, foto);
+		
+		unSistemaWeb.recibirMuestra(muestra);
 	}
 	public void verificarMuestra(Muestras muestra, Boolean booleano) {
 		
