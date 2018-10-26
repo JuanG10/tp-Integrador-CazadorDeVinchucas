@@ -8,6 +8,7 @@ public abstract class Usuario {
 	
 	private String alias;
 	private SistemaWeb unSistemaWeb;
+	private ArrayList<Muestras> muestrasVerificadas = new ArrayList<Muestras>();
 	//SACAR DE UML muestrasEnviadas Y REVISAR muestrasVerificadas DAME MAYUSCULAS MAS GRANDESSSS
 	
 	
@@ -25,6 +26,8 @@ public abstract class Usuario {
 		unSistemaWeb.recibirMuestra(muestra);
 	}
 	public void verificarMuestra(Muestras muestra, Boolean booleano) {
+		muestrasVerificadas.add(muestra);
+		//Falta terminar
 		
 	}
 	public void verificarConocimiento() {
