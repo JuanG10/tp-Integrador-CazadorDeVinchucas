@@ -1,25 +1,20 @@
 package clases;
 
+import java.time.LocalDate;
+
 import interfaces.NivelDeConocimiento;
 
 public class ConocimientoExperto implements NivelDeConocimiento {
-
-	public ConocimientoExperto() {
-		
-	}
-	@Override
-	public void verificarNivelDeConocimiento() {
-		// TODO Auto-generated method stub
-		
-	}
-	public void verifcarConocimientoExperto() {
-		
-	}
-	public void verificarConocimientoBasico() {
-		//REVISAR
-	}
+	LocalDate fechaInicioComoExperto = LocalDate.now();
 	
-
-
-
+	@Override
+	public NivelDeConocimiento verificarNivelDeConocimiento() {
+		LocalDate hoy = LocalDate.now();
+		if(hoy.getMonthValue() > fechaInicioComoExperto.getMonthValue() &
+				hoy.getDayOfMonth() >= fechaInicioComoExperto.getDayOfMonth()) {
+			return new ConocimientoBasico();
+		} else {
+			return this;
+		}
+	}
 }

@@ -14,10 +14,10 @@ public abstract class Usuario {
 	private NivelDeConocimiento nivelDeConocimiento;
 	
 	
-	public Usuario(String alias, SistemaWeb sistema, NivelDeConocimiento nivelDeConocimiento) {
+	public Usuario(String alias, SistemaWeb sistema, NivelDeConocimiento nvlConocimiento) {
 		this.alias = alias;
 		this.unSistemaWeb = sistema;
-		this.nivelDeConocimiento = nivelDeConocimiento;
+		this.nivelDeConocimiento = nvlConocimiento;
 	}
 	
 	
@@ -27,27 +27,24 @@ public abstract class Usuario {
 		Muestras muestra = new Muestras(this, ubicacion, tipoDeVinchuca, fecha, foto);
 		
 		unSistemaWeb.recibirMuestra(muestra);
+		
+		this.calcularNivelDeConocimiento();
 	}
+	
 	public void verificarMuestra(Muestras muestra, String tipoDeVinchuca) {
+		
 		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
+		
 		muestra.serVerificada(verificacion);
 		
-		
-		
 		muestrasVerificadas.add(muestra);
-		//Falta terminar
+		
+		this.calcularNivelDeConocimiento();
 		
 	}
-	public void verificarConocimiento() {
-		//CAMBIAR NOMBRE EN UML
-	}
 	
-	
-	private ArrayList<Muestras> pedirMuestrasPropias(){
-		return null; //REVISAR
-	}
 	private void calcularNivelDeConocimiento() {
-		//REVISAR SI SIRVE ESTO
+		nivelDeConocimiento = nivelDeConocimiento.verificarNivelDeConocimiento();
 	}
 	
 	

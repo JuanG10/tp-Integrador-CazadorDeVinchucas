@@ -4,13 +4,10 @@ import interfaces.NivelDeConocimiento;
 
 public class ConocimientoEspecialista implements NivelDeConocimiento {
 
-	public ConocimientoEspecialista() {
-		// TODO Auto-generated constructor stub
-	}
 	@Override
-	public void verificarNivelDeConocimiento() {
+	public NivelDeConocimiento verificarNivelDeConocimiento() {
 		// TODO Auto-generated method stub
-
+		return this;
 	}
 
 }

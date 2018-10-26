@@ -2,5 +2,5 @@ package interfaces;
 
 public interface NivelDeConocimiento {
 
-	public void verificarNivelDeConocimiento();
+	public NivelDeConocimiento verificarNivelDeConocimiento();
 }
