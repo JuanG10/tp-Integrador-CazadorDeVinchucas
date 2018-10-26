@@ -26,7 +26,7 @@ public abstract class Usuario {
 		
 		Muestras muestra = new Muestras(this, ubicacion, tipoDeVinchuca, fecha, foto);
 		
-		unSistemaWeb.recibirMuestra(muestra);
+		unSistemaWeb.recibirMuestra(muestra); //Esto se hace en el test pasando directamente las muestra a la web.
 		
 		this.calcularNivelDeConocimiento();
 	}
@@ -39,7 +39,7 @@ public abstract class Usuario {
 		
 		muestrasVerificadas.add(muestra);
 		
-		this.calcularNivelDeConocimiento();
+		this.calcularNivelDeConocimiento();//pasar hoy como parametro.
 		
 	}
 	
@@ -55,9 +55,5 @@ public abstract class Usuario {
 	public NivelDeConocimiento nivelDeConocimiento() {
 		return nivelDeConocimiento();
 	}
-	
-	
-	
-	
 
 }

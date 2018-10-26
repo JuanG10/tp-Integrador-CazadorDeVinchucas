@@ -10,6 +10,7 @@ public class ConocimientoExperto implements NivelDeConocimiento {
 	@Override
 	public NivelDeConocimiento verificarNivelDeConocimiento() {
 		LocalDate hoy = LocalDate.now();
+		
 		if(hoy.getMonthValue() > fechaInicioComoExperto.getMonthValue() &
 				hoy.getDayOfMonth() >= fechaInicioComoExperto.getDayOfMonth()) {
 			return new ConocimientoBasico();

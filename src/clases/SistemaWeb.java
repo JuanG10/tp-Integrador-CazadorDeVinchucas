@@ -7,7 +7,7 @@ public class SistemaWeb {
 
 	private ArrayList<Muestras> muestras = new ArrayList<Muestras>();
 	
-	public ArrayList<Muestras> muestras(){
+	public ArrayList<Muestras> muestras(Usuario usuario){
 		return null;
 	}
 
