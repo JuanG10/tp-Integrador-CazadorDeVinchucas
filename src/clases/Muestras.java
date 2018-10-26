@@ -2,6 +2,7 @@ package clases;
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import interfaces.NivelDeConocimiento;
 
@@ -32,14 +33,15 @@ public class Muestras {
 	
 	
 	public void serVerificada(Verificacion verificacion) {
-		if (contadorDeVerificaciones< 3) {
+		if (listaDeVerificaciones.size()< 3) {
 		this.calcularNivelDeVerificacion(verificacion);
-		contadorDeVerificaciones ++;
+		listaDeVerificaciones.add(verificacion);
 		}
 	}
 	
 	private void calcularNivelDeVerificacion(Verificacion verificacion){
-		if(tipoVinchuca == this.tipoDeVinchuca) {
+		if(verificacion.tipoVinchuca() == this.tipoDeVinchuca) {
+			
 			
 		}
 	}
