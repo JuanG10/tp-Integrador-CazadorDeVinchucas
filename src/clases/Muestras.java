@@ -3,6 +3,8 @@ package clases;
 import java.awt.image.BufferedImage;
 import java.time.LocalDate;
 
+import interfaces.NivelDeConocimiento;
+
 
 
 public class Muestras {
@@ -14,28 +16,32 @@ public class Muestras {
 	private Integer nroDeVerificacion;
 	private String tipoDeVinchuca;
 	private LocalDate fecha;
-	private String aliasUsuario;
-
+	private Usuario usuario;
+	private Integer contadorDeVerificaciones;
+	private ArrayList<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
 	
-	public Muestras(String aliasDeUsuario, Ubicacion ubicacion, String vinchuca, LocalDate fecha, BufferedImage foto) {
-		this.aliasUsuario = aliasDeUsuario;
+	public Muestras(Usuario usuario, Ubicacion ubicacion, String vinchuca, LocalDate fecha, BufferedImage foto) {
+		this.usuario = usuario;
 		this.ubicacion = ubicacion;
 		this.tipoDeVinchuca = vinchuca;
 		this.fecha = fecha;
 		this.foto = foto;
-		
+		this.contadorDeVerificaciones = 0;
 	}
 	
 	
 	
-	public void serVerificadaPorSuperior() {
-		
+	public void serVerificada(Verificacion verificacion) {
+		if (contadorDeVerificaciones< 3) {
+		this.calcularNivelDeVerificacion(verificacion);
+		contadorDeVerificaciones ++;
+		}
 	}
-	public void serVerificadaPorBasico() {
-		
-	}
-	public void calcularNroDeVerificacion(){
-		
+	
+	private void calcularNivelDeVerificacion(Verificacion verificacion){
+		if(tipoVinchuca == this.tipoDeVinchuca) {
+			
+		}
 	}
 	
 	
@@ -49,7 +55,7 @@ public class Muestras {
 		return nroDeVerificacion;
 	}	
 	public String aliasDeUsuario() {
-		return aliasUsuario;
+		return usuario.alias();
 	}
 	public Ubicacion ubicacion() {
 		return ubicacion;

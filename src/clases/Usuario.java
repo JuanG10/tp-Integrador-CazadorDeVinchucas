@@ -4,28 +4,37 @@ import java.awt.image.BufferedImage;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import interfaces.NivelDeConocimiento;
+
 public abstract class Usuario {
 	
 	private String alias;
 	private SistemaWeb unSistemaWeb;
 	private ArrayList<Muestras> muestrasVerificadas = new ArrayList<Muestras>();
+	private NivelDeConocimiento nivelDeConocimiento;
 	//SACAR DE UML muestrasEnviadas Y REVISAR muestrasVerificadas DAME MAYUSCULAS MAS GRANDESSSS
 	
 	
-	public Usuario(String alias, SistemaWeb sistema) {
+	public Usuario(String alias, SistemaWeb sistema, NivelDeConocimiento nivelDeConocimiento) {
 		this.alias = alias;
 		this.unSistemaWeb = sistema;
+		this.nivelDeConocimiento = nivelDeConocimiento;
 	}
 	
 	
 	
-	public void enviarMuestra(BufferedImage foto, String tipoDeVinchuca, String aliasUsuario,Ubicacion ubicacion, LocalDate fecha ) {
+	public void enviarMuestra(BufferedImage foto, String tipoDeVinchuca, Ubicacion ubicacion, LocalDate fecha ) {
 		
-		Muestras muestra = new Muestras(aliasUsuario, ubicacion, tipoDeVinchuca, fecha, foto);
+		Muestras muestra = new Muestras(this, ubicacion, tipoDeVinchuca, fecha, foto);
 		
 		unSistemaWeb.recibirMuestra(muestra);
 	}
-	public void verificarMuestra(Muestras muestra, Boolean booleano) {
+	public void verificarMuestra(Muestras muestra, String tipoDeVinchuca) {
+		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
+		muestra.serVerificada(verificacion)
+		
+		
+		
 		muestrasVerificadas.add(muestra);
 		//Falta terminar
 		
@@ -46,6 +55,9 @@ public abstract class Usuario {
 	//GETER
 	public String alias() {
 		return alias;
+	}
+	public NivelDeConocimiento nivelDeConocimiento() {
+		return nivelDeConocimiento();
 	}
 	
 	
