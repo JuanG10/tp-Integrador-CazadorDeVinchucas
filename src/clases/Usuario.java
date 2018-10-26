@@ -12,7 +12,6 @@ public abstract class Usuario {
 	private SistemaWeb unSistemaWeb;
 	private ArrayList<Muestras> muestrasVerificadas = new ArrayList<Muestras>();
 	private NivelDeConocimiento nivelDeConocimiento;
-	//SACAR DE UML muestrasEnviadas Y REVISAR muestrasVerificadas DAME MAYUSCULAS MAS GRANDESSSS
 	
 	
 	public Usuario(String alias, SistemaWeb sistema, NivelDeConocimiento nivelDeConocimiento) {
@@ -31,7 +30,7 @@ public abstract class Usuario {
 	}
 	public void verificarMuestra(Muestras muestra, String tipoDeVinchuca) {
 		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
-		muestra.serVerificada(verificacion)
+		muestra.serVerificada(verificacion);
 		
 		
 		
@@ -52,7 +51,7 @@ public abstract class Usuario {
 	}
 	
 	
-	//GETER
+	//GETTERS
 	public String alias() {
 		return alias;
 	}

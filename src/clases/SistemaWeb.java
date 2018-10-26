@@ -7,8 +7,8 @@ public class SistemaWeb {
 
 	private ArrayList<Muestras> muestras = new ArrayList<Muestras>();
 	
-	public SistemaWeb() {
-		
+	public ArrayList<Muestras> muestras(){
+		return null;
 	}
 
 	public void recibirMuestra(Muestras muestra) {
