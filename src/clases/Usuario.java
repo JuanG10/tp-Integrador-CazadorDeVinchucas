@@ -6,17 +6,17 @@ import java.util.ArrayList;
 
 import interfaces.NivelDeConocimiento;
 
-public abstract class Usuario {
+public class Usuario {
 	
 	private String alias;
-	private SistemaWeb unSistemaWeb;
-	private ArrayList<Muestras> muestrasVerificadas = new ArrayList<Muestras>();
+	private SistemaWeb sistemaWeb;
+	private ArrayList<Muestra> muestrasVerificadas = new ArrayList<Muestra>();
 	private NivelDeConocimiento nivelDeConocimiento;
 	
 	
 	public Usuario(String alias, SistemaWeb sistema, NivelDeConocimiento nvlConocimiento) {
 		this.alias = alias;
-		this.unSistemaWeb = sistema;
+		this.sistemaWeb = sistema;
 		this.nivelDeConocimiento = nvlConocimiento;
 	}
 	
@@ -24,14 +24,14 @@ public abstract class Usuario {
 	
 	public void enviarMuestra(BufferedImage foto, String tipoDeVinchuca, Ubicacion ubicacion, LocalDate fecha ) {
 		
-		Muestras muestra = new Muestras(this, ubicacion, tipoDeVinchuca, fecha, foto);
+		Muestra muestra = new Muestra(this, ubicacion, tipoDeVinchuca, fecha, foto);
 		
-		unSistemaWeb.recibirMuestra(muestra); //Esto se hace en el test pasando directamente las muestra a la web.
+		sistemaWeb.recibirMuestra(muestra); //Esto se hace en el test pasando directamente las muestra a la web.
 		
 		this.calcularNivelDeConocimiento();
 	}
 	
-	public void verificarMuestra(Muestras muestra, String tipoDeVinchuca) {
+	public void verificarMuestra(Muestra muestra, String tipoDeVinchuca) {
 		
 		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
 		
@@ -40,7 +40,6 @@ public abstract class Usuario {
 		muestrasVerificadas.add(muestra);
 		
 		this.calcularNivelDeConocimiento();//pasar hoy como parametro.
-		
 	}
 	
 	private void calcularNivelDeConocimiento() {
@@ -54,6 +53,14 @@ public abstract class Usuario {
 	}
 	public NivelDeConocimiento nivelDeConocimiento() {
 		return nivelDeConocimiento();
+	}
+
+	public SistemaWeb sistemaWeb() {
+		return sistemaWeb;
+	}
+	
+	public Integer cantidadDeMuestrasVerificadas() {
+		return muestrasVerificadas.size();
 	}
 
 }

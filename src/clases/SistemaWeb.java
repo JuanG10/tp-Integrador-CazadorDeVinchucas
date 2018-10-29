@@ -1,17 +1,19 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class SistemaWeb {
 
-	private ArrayList<Muestras> muestras = new ArrayList<Muestras>();
+	private List<Muestra> muestras = new ArrayList<Muestra>();
 	
-	public ArrayList<Muestras> muestras(Usuario usuario){
-		return null;
+	public List<Muestra> muestras(Usuario usuario){
+		return muestras.stream().filter(muestra -> muestra.aliasDeUsuario().equals(usuario.alias())).collect(Collectors.toList());
 	}
 
-	public void recibirMuestra(Muestras muestra) {
+	public void recibirMuestra(Muestra muestra) {
 		
 		muestras.add(muestra);
 		
