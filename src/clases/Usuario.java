@@ -1,8 +1,8 @@
 package clases;
 
-import java.awt.image.BufferedImage;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import interfaces.NivelDeConocimiento;
 
@@ -10,7 +10,7 @@ public abstract class Usuario {
 	
 	private String alias;
 	private SistemaWeb unSistemaWeb;
-	private ArrayList<Muestras> muestrasVerificadas = new ArrayList<Muestras>();
+	private List<Muestras> muestrasVerificadas = new ArrayList<Muestras>();
 	private NivelDeConocimiento nivelDeConocimiento;
 	
 	
@@ -21,15 +21,15 @@ public abstract class Usuario {
 	}
 	
 	
-	
-	public void enviarMuestra(BufferedImage foto, String tipoDeVinchuca, Ubicacion ubicacion, LocalDate fecha ) {
-		
-		Muestras muestra = new Muestras(this, ubicacion, tipoDeVinchuca, fecha, foto);
-		
-		unSistemaWeb.recibirMuestra(muestra); //Esto se hace en el test pasando directamente las muestra a la web.
-		
-		this.calcularNivelDeConocimiento();
-	}
+	//Esto se hace en el test pasando directamente las muestra a la web hechas a mano.
+//	public void enviarMuestra(BufferedImage foto, String tipoDeVinchuca, Ubicacion ubicacion, LocalDate fecha ) {
+//		
+//		Muestras muestra = new Muestras(this, ubicacion, tipoDeVinchuca, fecha, foto);
+//		
+//		unSistemaWeb.recibirMuestra(muestra); 
+//		
+//		this.calcularNivelDeConocimiento();
+//	}
 	
 	public void verificarMuestra(Muestras muestra, String tipoDeVinchuca) {
 		
