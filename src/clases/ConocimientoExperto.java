@@ -1,21 +1,31 @@
 package clases;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import interfaces.NivelDeConocimiento;
 
 public class ConocimientoExperto implements NivelDeConocimiento {
-	LocalDate fechaInicioComoExperto = LocalDate.now();
 	
 	@Override
-	public NivelDeConocimiento verificarNivelDeConocimiento() {
+	public NivelDeConocimiento verificarNivelDeConocimiento(List<Muestras> muestrasVerificadas,
+															List<Muestras> muestrasEnviadas) {
 		LocalDate hoy = LocalDate.now();
 		
-		if(hoy.getMonthValue() > fechaInicioComoExperto.getMonthValue() &
-				hoy.getDayOfMonth() >= fechaInicioComoExperto.getDayOfMonth()) {
-			return new ConocimientoBasico();
-		} else {
+		Integer cantMuestrasEnviadasEnElMes = 
+				muestrasEnviadas.stream().filter(muestra -> muestra.fecha().getMonthValue() == hoy.getMonthValue() ||
+				(muestra.fecha().getMonthValue() == hoy.getMonthValue()-1 && muestra.fecha().getDayOfMonth() >= hoy.getDayOfMonth())).collect(Collectors.toList()).size();
+		
+		Integer cantMuestrasVerificadasEnElMes = muestrasVerificadas.stream().filter(muestra -> muestra.fecha().getMonthValue() == hoy.getMonthValue() ||
+				(muestra.fecha().getMonthValue() == hoy.getMonthValue()-1 && muestra.fecha().getDayOfMonth() >= hoy.getDayOfMonth())).collect(Collectors.toList()).size();
+		
+		//Pasar a mensajes y considerar si deberian guardarse directamente en alguna variable.
+		
+		if (cantMuestrasEnviadasEnElMes >= 10 && cantMuestrasVerificadasEnElMes >= 20) {
 			return this;
+		} else {
+			return new ConocimientoBasico();
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 
 public class SistemaWeb {
@@ -8,8 +9,10 @@ public class SistemaWeb {
 	private ArrayList<Muestras> muestras = new ArrayList<Muestras>();
 	
 	public ArrayList<Muestras> muestras(Usuario usuario){
-		//Filtrar las muestras cuyos alias de usuario sean los del usuario que las creó
-		return null;
+		ArrayList<Muestras> muestrasFiltradas = 
+			(ArrayList<Muestras>) muestras.stream().filter(muestra -> muestra.aliasDeUsuario() == usuario.alias()).collect(Collectors.toList());
+		
+		return muestrasFiltradas;
 	}
 
 	public void recibirMuestra(Muestras muestra) {

@@ -1,6 +1,5 @@
 package clases;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +43,7 @@ public abstract class Usuario {
 	}
 	
 	private void calcularNivelDeConocimiento() {
-		nivelDeConocimiento = nivelDeConocimiento.verificarNivelDeConocimiento();
+		nivelDeConocimiento = nivelDeConocimiento.verificarNivelDeConocimiento(muestrasVerificadas,unSistemaWeb.muestras(this));
 	}
 	
 	
@@ -52,6 +51,7 @@ public abstract class Usuario {
 	public String alias() {
 		return alias;
 	}
+	
 	public NivelDeConocimiento nivelDeConocimiento() {
 		return nivelDeConocimiento();
 	}
