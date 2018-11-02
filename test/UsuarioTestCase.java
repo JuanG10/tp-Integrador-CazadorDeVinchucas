@@ -43,7 +43,7 @@ class UsuarioTestCase {
 	}
 	
 	@Test
-	void testUnUsuarioInicializadoConConocimientoExpertoVuelveABasicoAlRealizarUnaAccionYaQueNoParticipoEnLasMuestras() {
+	void testUnUsuarioInicializadoConConocimientoExpertoVuelveABasicoAlRealizarUnaAccionYaQueNoParticipoEnLasSuficientesMuestras() {
 		
 		assertEquals(nvlExp,usExperto.nivelDeConocimiento());
 		usExperto.verificarMuestra(muestra, "ChincheFoliada");
@@ -52,7 +52,7 @@ class UsuarioTestCase {
 	}
 	
 	@Test
-	void testUnUsuarioRecienCreadoRealiza20VerificacionesY10EnviosYSeVueleExperto() {
+	void testUnUsuarioRecienCreadoRealiza20VerificacionesY10EnviosYSeVuelveExperto() {
 	
 		assertEquals(nvlBas,usBasico.nivelDeConocimiento());
 		
