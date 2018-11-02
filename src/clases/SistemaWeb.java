@@ -6,16 +6,16 @@ import java.util.stream.Collectors;
 
 public class SistemaWeb {
 
-	private ArrayList<Muestras> muestras = new ArrayList<Muestras>();
+	private ArrayList<Muestra> muestras = new ArrayList<Muestra>();
 	
-	public ArrayList<Muestras> muestras(Usuario usuario){
-		ArrayList<Muestras> muestrasFiltradas = 
-			(ArrayList<Muestras>) muestras.stream().filter(muestra -> muestra.aliasDeUsuario() == usuario.alias()).collect(Collectors.toList());
+	public ArrayList<Muestra> muestras(Usuario usuario){
+		ArrayList<Muestra> muestrasFiltradas = 
+			(ArrayList<Muestra>) muestras.stream().filter(muestra -> muestra.aliasDeUsuario() == usuario.alias()).collect(Collectors.toList());
 		
 		return muestrasFiltradas;
 	}
 
-	public void recibirMuestra(Muestras muestra) {
+	public void recibirMuestra(Muestra muestra) {
 		
 		muestras.add(muestra);
 		

@@ -9,8 +9,8 @@ import interfaces.NivelDeConocimiento;
 public class ConocimientoExperto implements NivelDeConocimiento {
 	
 	@Override
-	public NivelDeConocimiento verificarNivelDeConocimiento(List<Muestras> muestrasVerificadas,
-															List<Muestras> muestrasEnviadas) {
+	public NivelDeConocimiento verificarNivelDeConocimiento(List<Muestra> muestrasVerificadas,
+															List<Muestra> muestrasEnviadas) {
 		LocalDate hoy = LocalDate.now();
 		
 		Integer cantMuestrasEnviadasEnElMes = 

@@ -9,7 +9,7 @@ public class Usuario {
 	
 	private String alias;
 	private SistemaWeb unSistemaWeb;
-	private List<Muestras> muestrasVerificadas = new ArrayList<Muestras>();
+	private List<Muestra> muestrasVerificadas = new ArrayList<Muestra>();
 	private NivelDeConocimiento nivelDeConocimiento;
 	
 	public Usuario(String alias, SistemaWeb sistema) {
@@ -35,7 +35,7 @@ public class Usuario {
 //		this.calcularNivelDeConocimiento();
 //	}
 	
-	public void verificarMuestra(Muestras muestra, String tipoDeVinchuca) {
+	public void verificarMuestra(Muestra muestra, String tipoDeVinchuca) {
 		
 		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
 		

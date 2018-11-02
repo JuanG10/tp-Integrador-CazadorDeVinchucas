@@ -8,7 +8,7 @@ import interfaces.NivelDeConocimiento;
 
 
 
-public class Muestras {
+public class Muestra {
 	
 	
 	
@@ -21,7 +21,7 @@ public class Muestras {
 	private Integer contadorDeVerificaciones;
 	private ArrayList<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
 	
-	public Muestras(Usuario usuario, Ubicacion ubicacion, String vinchuca, LocalDate fecha, BufferedImage foto) {
+	public Muestra(Usuario usuario, Ubicacion ubicacion, String vinchuca, LocalDate fecha, BufferedImage foto) {
 		this.usuario = usuario;
 		this.ubicacion = ubicacion;
 		this.tipoDeVinchuca = vinchuca;
