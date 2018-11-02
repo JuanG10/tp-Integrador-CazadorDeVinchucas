@@ -5,13 +5,18 @@ import java.util.List;
 
 import interfaces.NivelDeConocimiento;
 
-public abstract class Usuario {
+public class Usuario {
 	
 	private String alias;
 	private SistemaWeb unSistemaWeb;
 	private List<Muestras> muestrasVerificadas = new ArrayList<Muestras>();
 	private NivelDeConocimiento nivelDeConocimiento;
 	
+	public Usuario(String alias, SistemaWeb sistema) {
+		this.alias = alias;
+		this.unSistemaWeb = sistema;
+		this.nivelDeConocimiento = new ConocimientoBasico();
+	}
 	
 	public Usuario(String alias, SistemaWeb sistema, NivelDeConocimiento nvlConocimiento) {
 		this.alias = alias;
