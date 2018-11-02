@@ -1,6 +1,6 @@
 package clases;
 
-public class Verificacion {
+public abstract class Verificacion {
 	private Usuario usuario;
 	private String tipoVinchuca;
 	
@@ -17,4 +17,6 @@ public class Verificacion {
 	public String tipoVinchuca(){
 		return tipoVinchuca;
 	}
+
+	public abstract boolean esDefinitoria();
 }

@@ -41,4 +41,9 @@ public class ConocimientoExperto implements NivelDeConocimiento {
 		if (o instanceof ConocimientoExperto)return true;
 		return false;
 	}
+	
+	public boolean esDefinitoria() {
+		return true;
+	}
+	
 }

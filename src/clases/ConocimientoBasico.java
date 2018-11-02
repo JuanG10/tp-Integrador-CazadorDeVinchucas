@@ -36,4 +36,8 @@ public class ConocimientoBasico implements NivelDeConocimiento {
 		if (o instanceof ConocimientoBasico)return true;
 		return false;
 	}
+	
+	public boolean esDefinitoria() {
+		return false;
+	}
 }

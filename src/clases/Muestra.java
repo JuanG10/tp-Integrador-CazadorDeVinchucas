@@ -3,10 +3,9 @@ package clases;
 import java.awt.image.BufferedImage;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-import interfaces.NivelDeConocimiento;
-
-
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Muestra {
 	
@@ -18,7 +17,8 @@ public class Muestra {
 	private LocalDate fecha;
 	private Usuario usuario;
 	private Integer cantidadDeVerificaciones;
-	private ArrayList<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
+	private List<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
+	private String nivelDeVerificacion;
 	
 	public Muestra(Usuario usuario, Ubicacion ubicacion, String vinchuca, LocalDate fecha, BufferedImage foto) {
 		this.usuario = usuario;
@@ -33,18 +33,31 @@ public class Muestra {
 	
 	public void serVerificada(Verificacion verificacion) {
 		if (listaDeVerificaciones.size()< 3) {
-		this.calcularNivelDeVerificacion(verificacion);
 		listaDeVerificaciones.add(verificacion);
+		this.calcularNivelDeVerificacion();
 		}
 	}
 	
-	private void calcularNivelDeVerificacion(Verificacion verificacion){
-		if(verificacion.tipoVinchuca() == this.tipoDeVinchuca) {
-			
-			
+	private void calcularNivelDeVerificacion(){
+		if(hayDisencion()) {
+			nivelDeVerificacion = "Indefinido";
+		} else {
+			nivelDeVerificacion = x();
 		}
 	}
 	
+	private boolean hayDisencion() {
+		List<Verificacion> verificacionesConMayorValor = listaDeVerificaciones.stream().filter(verificacion 
+				-> verificacion.esDefinitoria()).collect(Collectors.toList());
+		Set<String> tipos = verificacionesConMayorValor.stream().map(verificacion 
+				-> verificacion.tipoVinchuca()).collect(Collectors.toSet());
+		// REVISAR CASO LISTA VACIA ( SI NO HAY ESPECIALISTA)
+		
+		return tipos.size() == verificacionesConMayorValor.size();
+	}
+	private String x() {
+		return "";
+	}
 	
 	
 	//GETERS
