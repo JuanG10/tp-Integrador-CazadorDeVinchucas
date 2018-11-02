@@ -34,9 +34,7 @@ public class Usuario {
 //		
 //		this.calcularNivelDeConocimiento();
 //	}
-	
-	
-	
+
 	public void verificarMuestra(Muestra muestra, String tipoDeVinchuca) {
 		
 		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
@@ -46,7 +44,6 @@ public class Usuario {
 		muestrasVerificadas.add(muestra);
 		
 		this.calcularNivelDeConocimiento();//pasar hoy como parametro.
-		
 	}
 	
 	private void calcularNivelDeConocimiento() {
@@ -61,6 +58,14 @@ public class Usuario {
 	
 	public NivelDeConocimiento nivelDeConocimiento() {
 		return nivelDeConocimiento;
+	}
+
+	public SistemaWeb sistemaWeb() {
+		return unSistemaWeb;
+	}
+	
+	public Integer cantidadDeMuestrasVerificadas() {
+		return muestrasVerificadas.size();
 	}
 
 }

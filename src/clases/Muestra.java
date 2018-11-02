@@ -14,11 +14,10 @@ public class Muestra {
 	
 	private BufferedImage foto;
 	private Ubicacion ubicacion;
-	private Integer nroDeVerificacion;
 	private String tipoDeVinchuca;
 	private LocalDate fecha;
 	private Usuario usuario;
-	private Integer contadorDeVerificaciones;
+	private Integer cantidadDeVerificaciones;
 	private ArrayList<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
 	
 	public Muestra(Usuario usuario, Ubicacion ubicacion, String vinchuca, LocalDate fecha, BufferedImage foto) {
@@ -27,7 +26,7 @@ public class Muestra {
 		this.tipoDeVinchuca = vinchuca;
 		this.fecha = fecha;
 		this.foto = foto;
-		this.contadorDeVerificaciones = 0;
+		this.cantidadDeVerificaciones = 0;
 	}
 	
 	
@@ -53,8 +52,8 @@ public class Muestra {
 	public LocalDate fecha() {
 		return fecha;
 	}
-	public Integer nroDeVerificacion() {
-		return nroDeVerificacion;
+	public Integer cantidadDeVerificaciones() {
+		return cantidadDeVerificaciones;
 	}	
 	public String aliasDeUsuario() {
 		return usuario.alias();
