@@ -3,6 +3,7 @@ package clases;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import interfaces.NivelDeConocimiento;
 
@@ -13,19 +14,27 @@ public class ConocimientoExperto implements NivelDeConocimiento {
 															List<Muestra> muestrasEnviadas) {
 		LocalDate hoy = LocalDate.now();
 		
-		Integer cantMuestrasEnviadasEnElMes = 
-				muestrasEnviadas.stream().filter(muestra -> muestra.fecha().getMonthValue() == hoy.getMonthValue() ||
-				(muestra.fecha().getMonthValue() == hoy.getMonthValue()-1 && muestra.fecha().getDayOfMonth() >= hoy.getDayOfMonth())).collect(Collectors.toList()).size();
+		Integer cantMuestrasEnviadasEnElMes = calcularCantMuestrasDelMes(muestrasEnviadas,hoy);
 		
-		Integer cantMuestrasVerificadasEnElMes = muestrasVerificadas.stream().filter(muestra -> muestra.fecha().getMonthValue() == hoy.getMonthValue() ||
-				(muestra.fecha().getMonthValue() == hoy.getMonthValue()-1 && muestra.fecha().getDayOfMonth() >= hoy.getDayOfMonth())).collect(Collectors.toList()).size();
-		
-		//Pasar a mensajes y considerar si deberian guardarse directamente en alguna variable.
-		
+		Integer cantMuestrasVerificadasEnElMes = calcularCantMuestrasDelMes(muestrasVerificadas, hoy);
+
 		if (cantMuestrasEnviadasEnElMes >= 10 && cantMuestrasVerificadasEnElMes >= 20) {
 			return this;
 		} else {
 			return new ConocimientoBasico();
 		}
+	}
+	
+	private Integer calcularCantMuestrasDelMes(List<Muestra> muestras, LocalDate hoy) {
+		return muestras.stream().filter(muestra -> muestra.fecha().getMonthValue() == hoy.getMonthValue() ||
+				(muestra.fecha().getMonthValue() == hoy.getMonthValue()-1 && muestra.fecha().getDayOfMonth() >= hoy.getDayOfMonth())).collect(Collectors.toList()).size();
+	}
+	
+	
+	public boolean equals(Object o) {
+		if (o == null) return false;
+		if (o == this) return true;
+		if (o instanceof ConocimientoExperto)return true;
+		return false;
 	}
 }
