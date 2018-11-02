@@ -58,7 +58,7 @@ public class Usuario {
 	}
 	
 	public NivelDeConocimiento nivelDeConocimiento() {
-		return nivelDeConocimiento();
+		return nivelDeConocimiento;
 	}
 
 }
