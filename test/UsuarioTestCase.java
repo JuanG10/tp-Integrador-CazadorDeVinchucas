@@ -13,8 +13,6 @@ import interfaces.NivelDeConocimiento;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 class UsuarioTestCase {
 	Usuario usEspecialista;
