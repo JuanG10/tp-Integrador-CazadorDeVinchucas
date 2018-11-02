@@ -1,6 +1,8 @@
 package clases;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDate;
@@ -25,7 +27,7 @@ public class MuestraTest {
 		fecha = LocalDate.now();
 		usuarioMock = mock(Usuario.class);
 		
-		when(usuarioMock.alias()).then("Jorge");
+		when(usuarioMock.alias()).thenReturn("Jorge");
 		
 		muestra = new Muestra(usuarioMock, ubicacionMock, tipoDeVinchuca, fecha, fotoMock);
 	}

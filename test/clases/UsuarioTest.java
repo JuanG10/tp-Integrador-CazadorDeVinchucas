@@ -1,6 +1,7 @@
 package clases;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDate;
@@ -31,19 +32,6 @@ public class UsuarioTest {
 		assertEquals(usuario.alias(), alias);
 		assertEquals(usuario.nivelDeConocimiento(), nivel);
 		assertEquals(usuario.sistemaWeb(), sistema);
-	}
-	
-	@Test
-	public void unUsuarioEnviaUnaMuestraAlSistemaWebYEsteLaRecibe() {
-		
-		BufferedImage fotoMock = mock(BufferedImage.class);
-		String tipoDeVinchuca = "Imagen poco clara";
-		Ubicacion ubicacionMock = mock(Ubicacion.class);
-		LocalDate fecha = LocalDate.now();
-		
-		usuario.enviarMuestra(fotoMock, tipoDeVinchuca, ubicacionMock, fecha);
-		
-		verify(sistema, times(1)).recibirMuestra(any(Muestra.class));
 	}
 	
 	@Test

@@ -22,8 +22,8 @@ public class SistemaWebTest {
 		Usuario usuarioMock = mock(Usuario.class);
 		Muestra muestraMock = mock(Muestra.class);
 		
-		when(usuarioMock.alias()).then("Jorge");
-		when(muestraMock.aliasDeUsuario()).then(usuarioMock.alias());
+		when(usuarioMock.alias()).thenReturn("Jorge");
+		when(muestraMock.aliasDeUsuario()).thenReturn("Jorge");
 		
 		sistema.recibirMuestra(muestraMock);
 		
