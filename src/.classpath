@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="w-etc-master/Java/C1NumeroExerciseJava10/src/main/java/|w-etc-master/Java/C1NumeroExerciseJava10/src/test/java/" kind="src" path=""/>
+	<classpathentry kind="src" path="w-etc-master/Java/C1NumeroExerciseJava10/src/main/java"/>
+	<classpathentry kind="src" path="w-etc-master/Java/C1NumeroExerciseJava10/src/test/java"/>
+	<classpathentry kind="output" path="w-etc-master/Java/C1NumeroExerciseJava10/target/classes"/>
+</classpath>
