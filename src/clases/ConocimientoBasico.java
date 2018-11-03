@@ -40,4 +40,9 @@ public class ConocimientoBasico implements NivelDeConocimiento {
 	public boolean esDefinitoria() {
 		return false;
 	}
+	
+	public Verificacion verificacionEmitible(Usuario usuario, String tipoDeVinchuca) {
+		return null;
+		//REVISAR
+	}
 }

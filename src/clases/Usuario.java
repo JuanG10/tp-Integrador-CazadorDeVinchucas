@@ -37,11 +37,13 @@ public class Usuario {
 
 	public void verificarMuestra(Muestra muestra, String tipoDeVinchuca) {
 		
-		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
+		Verificacion verificacion = new nivelDeConocimiento.verificacionEmitible(this, tipoDeVinchuca);
+		//REVISAR
 		
 		muestra.serVerificada(verificacion);
 		
 		muestrasVerificadas.add(muestra);
+		
 		
 		this.calcularNivelDeConocimiento();//pasar hoy como parametro.
 	}

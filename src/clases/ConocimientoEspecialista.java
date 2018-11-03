@@ -23,4 +23,8 @@ public class ConocimientoEspecialista implements NivelDeConocimiento {
 	public boolean esDefinitoria() {
 		return true;
 	}
+	public Verificacion verificacionEmitible(Usuario usuario, String tipoDeVinchuca) {
+		return null;
+		//REVISAR
+	}
 }
