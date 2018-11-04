@@ -33,13 +33,11 @@ public class Muestra {
 	
 	public void serVerificada(Verificacion verificacion) {
 		if (listaDeVerificaciones.size()< 3) {
-		listaDeVerificaciones.add(verificacion);
-		this.calcularNivelDeVerificacion();
+			listaDeVerificaciones.add(verificacion);
+			verificador.calcularNivelDeVerificacion();
+		} else {
+			throw new RuntimeException("La muestra ya fue verificada tres veces");
 		}
-	}
-	
-	private void calcularNivelDeVerificacion(){
-		verificador.calcularVerificacion();
 	}
 	
 	//GETTERS

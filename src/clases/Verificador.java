@@ -13,8 +13,8 @@ public class Verificador {
 		this.muestra = muestra;
 	}
 	
-	public void calcularVerificacion() {
-		if(hayDisencion()) {
+	public void calcularNivelDeVerificacion() {
+		if(hayDisension()) {
 			muestra.setNivelDeVerificacion("Indefinido");
 		} else if(fueVerificadaPorExpertoOEspecialista()) {
 			muestra.setNivelDeVerificacion("Alto");
@@ -23,22 +23,30 @@ public class Verificador {
 		}
 	}
 	
-	private boolean hayDisencion() {
+	private boolean hayDisension() {
 		List<Verificacion> verificacionesConMayorValor = verificacionesConMayorValor();
-		Set<String> tipos = verificacionesConMayorValor.stream().map(verificacion 
-				-> verificacion.tipoVinchuca()).collect(Collectors.toSet());
+		Set<String> tipos = tiposDeVinchucaSinRepeticiones(verificacionesConMayorValor);
 		
 		return tipos.size() == verificacionesConMayorValor.size();
+	}
+
+	private Set<String> tiposDeVinchucaSinRepeticiones(List<Verificacion> verificacionesConMayorValor) {
+		return verificacionesConMayorValor.stream().map(verificacion 
+				-> verificacion.tipoVinchuca()).collect(Collectors.toSet());
 	}
 	
 	private List<Verificacion> verificacionesConMayorValor() {
 		if(fueVerificadaPorExpertoOEspecialista()) {
-			return muestra.listaDeVerificaciones().stream().filter(verificacion 
-					-> verificacion.esDefinitoria()).collect(Collectors.toList());
+			return verificacionesDeExpertosOEspecialistas();
 		} else {
 			return muestra.listaDeVerificaciones();
 		}
 		
+	}
+
+	private List<Verificacion> verificacionesDeExpertosOEspecialistas() {
+		return muestra.listaDeVerificaciones().stream().filter(verificacion 
+				-> verificacion.esDefinitoria()).collect(Collectors.toList());
 	}
 
 	private boolean fueVerificadaPorExpertoOEspecialista() {
