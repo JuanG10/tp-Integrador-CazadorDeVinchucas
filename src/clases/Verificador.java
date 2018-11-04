@@ -19,7 +19,7 @@ public class Verificador {
 		} else if(fueVerificadaPorExpertoOEspecialista()) {
 			muestra.setNivelDeVerificacion("Alto");
 		} else {
-			muestra.setNivelDeVerificacion(niveles[muestra.listaDeVerificaciones().size()]);
+			muestra.setNivelDeVerificacion(niveles[muestra.listaDeVerificaciones().size() - 1]);
 		}
 	}
 	
