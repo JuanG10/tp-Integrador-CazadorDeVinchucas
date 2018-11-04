@@ -19,6 +19,7 @@ public class Muestra {
 	private Integer cantidadDeVerificaciones;
 	private List<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
 	private String nivelDeVerificacion;
+	private Verificador verificador;
 	
 	public Muestra(Usuario usuario, Ubicacion ubicacion, String vinchuca, LocalDate fecha, BufferedImage foto) {
 		this.usuario = usuario;
@@ -27,9 +28,8 @@ public class Muestra {
 		this.fecha = fecha;
 		this.foto = foto;
 		this.cantidadDeVerificaciones = 0;
+		this.verificador = new Verificador(this);
 	}
-	
-	
 	
 	public void serVerificada(Verificacion verificacion) {
 		if (listaDeVerificaciones.size()< 3) {
@@ -39,28 +39,10 @@ public class Muestra {
 	}
 	
 	private void calcularNivelDeVerificacion(){
-		if(hayDisencion()) {
-			nivelDeVerificacion = "Indefinido";
-		} else {
-			nivelDeVerificacion = x();
-		}
+		verificador.calcularVerificacion();
 	}
 	
-	private boolean hayDisencion() {
-		List<Verificacion> verificacionesConMayorValor = listaDeVerificaciones.stream().filter(verificacion 
-				-> verificacion.esDefinitoria()).collect(Collectors.toList());
-		Set<String> tipos = verificacionesConMayorValor.stream().map(verificacion 
-				-> verificacion.tipoVinchuca()).collect(Collectors.toSet());
-		// REVISAR CASO LISTA VACIA ( SI NO HAY ESPECIALISTA)
-		
-		return tipos.size() == verificacionesConMayorValor.size();
-	}
-	private String x() {
-		return "";
-	}
-	
-	
-	//GETERS
+	//GETTERS
 	
 	public LocalDate fecha() {
 		return fecha;
@@ -79,5 +61,15 @@ public class Muestra {
 	}
 	public BufferedImage fotoVinchuca() {
 		return foto;
+	}
+	public List<Verificacion> listaDeVerificaciones() {
+		return listaDeVerificaciones;
+	}
+	
+	
+	//SETTERS
+	
+	public void setNivelDeVerificacion(String nivel) {
+		this.nivelDeVerificacion = nivel;
 	}
 }
