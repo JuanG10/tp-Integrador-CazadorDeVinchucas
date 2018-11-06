@@ -49,7 +49,7 @@ public class Usuario {
 	}
 	
 	private Verificacion verificacionPara(Usuario usuario, String tipoDeVinchuca) {
-		return NivelDeVerificacion.verificacionPara(usuario, tipoVinchuca);
+		return NivelDeVerificacion.verificacionPara(usuario, tipoDeVinchuca);
 	}
 
 	private void calcularNivelDeConocimiento() {
