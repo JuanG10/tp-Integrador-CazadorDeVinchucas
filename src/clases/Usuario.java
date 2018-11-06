@@ -37,7 +37,7 @@ public class Usuario {
 
 	public void verificarMuestra(Muestra muestra, String tipoDeVinchuca) {
 		
-		Verificacion verificacion = new nivelDeConocimiento.verificacionEmitible(this, tipoDeVinchuca);
+		Verificacion verificacion = verificacionPara(this, tipoDeVinchuca);
 		//REVISAR
 		
 		muestra.serVerificada(verificacion);
@@ -48,6 +48,10 @@ public class Usuario {
 		this.calcularNivelDeConocimiento();//pasar hoy como parametro.
 	}
 	
+	private Verificacion verificacionPara(Usuario usuario, String tipoDeVinchuca) {
+		return NivelDeVerificacion.verificacionPara(usuario, tipoVinchuca);
+	}
+
 	private void calcularNivelDeConocimiento() {
 		nivelDeConocimiento = nivelDeConocimiento.verificarNivelDeConocimiento(muestrasVerificadas,unSistemaWeb.muestras(this));
 	}
