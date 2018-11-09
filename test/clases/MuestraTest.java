@@ -46,6 +46,7 @@ public class MuestraTest {
 	}
 	
 	@Test
+<<<<<<< HEAD
 	public void unaMuestraRecienCreadaTiene1Verificaciones() {
 		
 		assertEquals(new Integer(1), muestra.cantidadDeVerificaciones());
@@ -67,6 +68,11 @@ public class MuestraTest {
 			
 		}
 		//REVISAR
+=======
+	public void unaMuestraRecienCreadaTieneUnaVerificacion() {
+		
+		assertEquals(new Integer(1), muestra.cantidadDeVerificaciones());
+>>>>>>> 38543aaa57a8f7a4bdb5d1c31e90196ceb52b113
 	}
 
 }
