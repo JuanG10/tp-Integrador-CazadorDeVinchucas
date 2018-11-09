@@ -16,7 +16,6 @@ public class Muestra {
 	private String tipoDeVinchuca;
 	private LocalDate fecha;
 	private Usuario usuario;
-	private Integer cantidadDeVerificaciones;
 	private List<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
 	private String nivelDeVerificacion;
 	private Verificador verificador;
@@ -27,12 +26,14 @@ public class Muestra {
 		this.tipoDeVinchuca = vinchuca;
 		this.fecha = fecha;
 		this.foto = foto;
-		this.cantidadDeVerificaciones = 0;
 		this.verificador = new Verificador(this);
+		this.listaDeVerificaciones = new ArrayList<>();
+		
+		this.serVerificada(new Verificacion(usuario, vinchuca));
 	}
 	
 	public void serVerificada(Verificacion verificacion) {
-		if (listaDeVerificaciones.size()< 3) {
+		if (cantidadDeVerificaciones()< 3) {
 			listaDeVerificaciones.add(verificacion);
 			verificador.calcularNivelDeVerificacion();
 		} else {
@@ -46,7 +47,7 @@ public class Muestra {
 		return fecha;
 	}
 	public Integer cantidadDeVerificaciones() {
-		return cantidadDeVerificaciones;
+		return listaDeVerificaciones.size();
 	}	
 	public String aliasDeUsuario() {
 		return usuario.alias();

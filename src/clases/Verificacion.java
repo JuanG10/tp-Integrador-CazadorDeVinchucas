@@ -3,12 +3,10 @@ package clases;
 public class Verificacion {
 	private Usuario usuario;
 	private String tipoVinchuca;
-	private NivelDeVerificacion nivelDeVerificacion;
 	
-	public Verificacion(Usuario usuario, String tipoDeVinchuca, NivelDeVerificacion nivel) {
+	public Verificacion(Usuario usuario, String tipoDeVinchuca) {
 		this.usuario = usuario;
 		this.tipoVinchuca = tipoDeVinchuca;
-		this.nivelDeVerificacion = nivel;
 	}
 
 	//GETTERS
