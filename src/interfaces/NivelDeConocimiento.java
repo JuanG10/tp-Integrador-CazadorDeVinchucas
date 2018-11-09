@@ -10,6 +10,6 @@ public interface NivelDeConocimiento {
 	
 	public boolean equals(Object o);
 
-	public boolean esExpertoOEspecialista();
+	public boolean esDefinitorio();
 
 }

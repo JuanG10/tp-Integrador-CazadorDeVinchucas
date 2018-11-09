@@ -73,7 +73,7 @@ public class Usuario {
 	}
 
 	public boolean esExpertoOEspecialista() {
-		return nivelDeConocimiento.esExpertoOEspecialista();
+		return nivelDeConocimiento.esDefinitorio();
 	}
 
 }

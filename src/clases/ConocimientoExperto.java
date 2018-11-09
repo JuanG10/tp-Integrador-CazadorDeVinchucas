@@ -37,12 +37,7 @@ public class ConocimientoExperto implements NivelDeConocimiento {
 		return false;
 	}
 	
-	public boolean esDefinitoria() {
-		return true;
-	}
-
-	@Override
-	public boolean esExpertoOEspecialista() {
+	public boolean esDefinitorio() {
 		return true;
 	}
 	
