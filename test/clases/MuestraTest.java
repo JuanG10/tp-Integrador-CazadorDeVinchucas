@@ -44,9 +44,9 @@ public class MuestraTest {
 	}
 	
 	@Test
-	public void unaMuestraRecienCreadaTiene0Verificaciones() {
+	public void unaMuestraRecienCreadaTieneUnaVerificacion() {
 		
-		assertEquals(new Integer(0), muestra.cantidadDeVerificaciones());
+		assertEquals(new Integer(1), muestra.cantidadDeVerificaciones());
 	}
 
 }
