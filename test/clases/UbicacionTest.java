@@ -19,7 +19,7 @@ public class UbicacionTest {
 	
 	@Test
 	public void testDeLaDistanciaEntreDosUbicaciones() {
-		assertEquals( (Double) 676.263917774003, ubicacion1.distanciaCon(ubicacion2));
+		assertEquals( (Double) 676.263917774003, ubicacion1.distanciaCon(ubicacion2), 10);
 	}
 
 }
