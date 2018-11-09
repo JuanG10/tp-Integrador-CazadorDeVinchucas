@@ -19,6 +19,6 @@ public class Verificacion {
 	}
 
 	public boolean esDefinitoria() {
-		return true;
+		return usuario.esExpertoOEspecialista();
 	}
 }
