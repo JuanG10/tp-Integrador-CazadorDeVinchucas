@@ -30,7 +30,7 @@ public class SistemaWebTest {
 		List<Muestra> resultadoEsperado = new ArrayList<>();
 		resultadoEsperado.add(muestraMock);
 		
-		assertEquals(resultadoEsperado, sistema.muestras(usuarioMock));
+		assertEquals(resultadoEsperado, sistema.muestrasSegun(usuarioMock));
 		
 		
 	}
