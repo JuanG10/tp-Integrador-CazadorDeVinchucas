@@ -74,4 +74,8 @@ public class Usuario {
 		return muestrasVerificadas.size();
 	}
 
+	public boolean esExpertoOEspecialista() {
+		return nivelDeConocimiento.esExpertoOEspecialista();
+	}
+
 }

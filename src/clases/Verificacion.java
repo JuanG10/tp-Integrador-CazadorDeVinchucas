@@ -1,12 +1,14 @@
 package clases;
 
-public abstract class Verificacion {
+public class Verificacion {
 	private Usuario usuario;
 	private String tipoVinchuca;
+	private NivelDeVerificacion nivelDeVerificacion;
 	
-	public Verificacion(Usuario usuario, String tipoDeVinchuca) {
+	public Verificacion(Usuario usuario, String tipoDeVinchuca, NivelDeVerificacion nivel) {
 		this.usuario = usuario;
 		this.tipoVinchuca = tipoDeVinchuca;
+		this.nivelDeVerificacion = nivel;
 	}
 
 	//GETTERS
@@ -18,5 +20,7 @@ public abstract class Verificacion {
 		return tipoVinchuca;
 	}
 
-	public abstract boolean esDefinitoria();
+	public boolean esDefinitoria() {
+		return true;
+	}
 }
