@@ -2,7 +2,6 @@ package clases;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import interfaces.NivelDeConocimiento;
 
 public class Usuario {
@@ -23,22 +22,11 @@ public class Usuario {
 		this.unSistemaWeb = sistema;
 		this.nivelDeConocimiento = nvlConocimiento;
 	}
-	
-	
-	//Esto se hace en el test pasando directamente las muestra a la web hechas a mano.
-//	public void enviarMuestra(BufferedImage foto, String tipoDeVinchuca, Ubicacion ubicacion, LocalDate fecha ) {
-//		
-//		Muestras muestra = new Muestras(this, ubicacion, tipoDeVinchuca, fecha, foto);
-//		
-//		unSistemaWeb.recibirMuestra(muestra); 
-//		
-//		this.calcularNivelDeConocimiento();
-//	}
+
 
 	public void verificarMuestra(Muestra muestra, String tipoDeVinchuca) {
 		
 		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
-		//REVISAR
 		
 		muestra.serVerificada(verificacion);
 		
@@ -51,7 +39,7 @@ public class Usuario {
 	
 
 	private void calcularNivelDeConocimiento() {
-		nivelDeConocimiento = nivelDeConocimiento.verificarNivelDeConocimiento(muestrasVerificadas,unSistemaWeb.muestras(this));
+		nivelDeConocimiento = nivelDeConocimiento.verificarNivelDeConocimiento(muestrasVerificadas,unSistemaWeb.muestrasSegun(this));
 	}
 	
 	
