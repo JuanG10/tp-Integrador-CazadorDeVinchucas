@@ -49,5 +49,10 @@ public class ConocimientoExperto implements NivelDeConocimiento {
 		return null;
 		//REVISAR
 	}
+
+	@Override
+	public boolean esExpertoOEspecialista() {
+		return true;
+	}
 	
 }
