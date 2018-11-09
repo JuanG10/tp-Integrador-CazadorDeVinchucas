@@ -1,3 +1,4 @@
+package clases;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,7 @@ import static org.mockito.Mockito.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-class UsuarioTestCase {
+class NivelDeConocimientoTest {
 	Usuario usEspecialista;
 	Usuario usExperto;
 	Usuario usBasico;
