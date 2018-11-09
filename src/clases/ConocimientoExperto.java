@@ -12,21 +12,16 @@ public class ConocimientoExperto implements NivelDeConocimiento {
 															List<Muestra> muestrasEnviadas) {
 		LocalDate hoy = LocalDate.now();
 
-		if (this.cantMuestrasEnviadasEnElMes(muestrasEnviadas,hoy) >= 10 && this.cantMuestrasVerificadasEnElMes(muestrasVerificadas,hoy) >= 20) {
+		Integer cantMuestrasEnviadasEnElMes = 
+				calcularCantMuestrasDelMes(muestrasEnviadas, hoy);
+		
+		Integer cantMuestrasVerificadasEnElMes = calcularCantMuestrasDelMes(muestrasVerificadas, hoy);
+		
+		if (cantMuestrasEnviadasEnElMes >= 10 && cantMuestrasVerificadasEnElMes >= 20) {
 			return this;
 		} else {
-			return new ConocimientoBasico();
+			return new ConocimientoExperto();
 		}
-	}
-	
-	private int cantMuestrasVerificadasEnElMes(List<Muestra> muestrasVerificadas, LocalDate hoy) {
-		// TODO Auto-generated method stub
-		return calcularCantMuestrasDelMes(muestrasVerificadas, hoy);
-	}
-
-	private int cantMuestrasEnviadasEnElMes(List<Muestra> muestrasEnviadas, LocalDate hoy) {
-		// TODO Auto-generated method stub
-		return calcularCantMuestrasDelMes(muestrasEnviadas,hoy);
 	}
 
 	private Integer calcularCantMuestrasDelMes(List<Muestra> muestras, LocalDate hoy) {
