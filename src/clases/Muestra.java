@@ -62,6 +62,9 @@ public class Muestra {
 	public List<Verificacion> listaDeVerificaciones() {
 		return listaDeVerificaciones;
 	}
+	public String nivelDeVerificacion() {
+		return nivelDeVerificacion;
+	}
 	
 	
 	//SETTERS

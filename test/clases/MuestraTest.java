@@ -69,7 +69,116 @@ public class MuestraTest {
 			
 		}
 	}
-		//REVISAR
+	
+	@Test
+	public void unaMuestraRecienCreadaTieneNivelDeVerificacionBajo() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuario = new Usuario("Jorge", sistema, new ConocimientoBasico());
+		Muestra muestra = new Muestra(usuario, ubicacionMock, "Vinchuca", LocalDate.now(), fotoMock);
+		
+		assertEquals("Bajo", muestra.nivelDeVerificacion());
+	}
+	
+	@Test
+	public void unaMuestraVerificadaPorUnUsuarioBasicoTieneNivelDeVerificacionMedio() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuario1 = new Usuario("Jorge", sistema, new ConocimientoBasico());
+		Usuario usuario2 = new Usuario("Juan", sistema, new ConocimientoBasico());
+		Muestra muestra = new Muestra(usuario1, ubicacionMock, "Vinchuca", LocalDate.now(), fotoMock);
+		
+		usuario2.verificarMuestra(muestra, "Vinchuca");
+		
+		assertEquals("Medio", muestra.nivelDeVerificacion());
+	}
+	
+	@Test
+	public void unaMuestraVerificadaPorDosUsuariosBasicosTieneNivelDeVerificacionAlto() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuario1 = new Usuario("Jorge", sistema, new ConocimientoBasico());
+		Usuario usuario2 = new Usuario("Juan", sistema, new ConocimientoBasico());
+		Usuario usuario3 = new Usuario("Facu", sistema, new ConocimientoBasico());
+		Muestra muestra = new Muestra(usuario1, ubicacionMock, "Vinchuca", LocalDate.now(), fotoMock);
+		
+		usuario2.verificarMuestra(muestra, "Vinchuca");
+		usuario3.verificarMuestra(muestra, "Vinchuca");
+		
+		assertEquals("Alto", muestra.nivelDeVerificacion());
+	}
+	
+	@Test
+	public void unaMuestraVerificadaPorDosUsuariosBasicosQueEstanDeAcuerdoYUnoQueNoTieneNivelDeVerificacionMedio() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuario1 = new Usuario("Jorge", sistema, new ConocimientoBasico());
+		Usuario usuario2 = new Usuario("Juan", sistema, new ConocimientoBasico());
+		Usuario usuario3 = new Usuario("Facu", sistema, new ConocimientoBasico());
+		Muestra muestra = new Muestra(usuario1, ubicacionMock, "Vinchuca", LocalDate.now(), fotoMock);
+		
+		usuario2.verificarMuestra(muestra, "Vinchuca");
+		usuario3.verificarMuestra(muestra, "Imagen poco clara");
+		
+		assertEquals("Medio", muestra.nivelDeVerificacion());
+	}
+	
+	@Test
+	public void unaMuestraVerificadaPorDosUsuariosBasicosQueNoEstanDeAcuerdoTieneNivelDeVerificacionIndefinido() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuario1 = new Usuario("Jorge", sistema, new ConocimientoBasico());
+		Usuario usuario2 = new Usuario("Juan", sistema, new ConocimientoBasico());
+		Muestra muestra = new Muestra(usuario1, ubicacionMock, "Vinchuca", LocalDate.now(), fotoMock);
+		
+		usuario2.verificarMuestra(muestra, "Imagen poco clara");
+		
+		assertEquals("Indefinido", muestra.nivelDeVerificacion());
+	}
+	
+	@Test
+	public void unaMuestraVerificadaPorUnUsuarioExpertoTieneNivelDeVerificacionAlto() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuario1 = new Usuario("Jorge", sistema, new ConocimientoBasico());
+		Usuario usuario2 = new Usuario("Juan", sistema, new ConocimientoExperto());
+		Muestra muestra = new Muestra(usuario1, ubicacionMock, "Vinchuca", LocalDate.now(), fotoMock);
+		
+		usuario2.verificarMuestra(muestra, "Vinchuca");
+		
+		assertEquals("Alto", muestra.nivelDeVerificacion());
+	}
+	
+	@Test
+	public void unaMuestraVerificadaPorUnUsuarioEspecialistaTieneNivelDeVerificacionAlto() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuario1 = new Usuario("Jorge", sistema, new ConocimientoBasico());
+		Usuario usuario2 = new Usuario("Juan", sistema, new ConocimientoEspecialista());
+		Muestra muestra = new Muestra(usuario1, ubicacionMock, "Vinchuca", LocalDate.now(), fotoMock);
+		
+		usuario2.verificarMuestra(muestra, "Vinchuca");
+		
+		assertEquals("Alto", muestra.nivelDeVerificacion());
+	}
+	
+	@Test
+	public void unaMuestraVerificadaPorDosEspecialistasQueNoEstanDeAcuerdoTieneNivelDeVerificacionIndefinido() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuario1 = new Usuario("Jorge", sistema);
+		Usuario usuario2 = new Usuario("Lucas", sistema, new ConocimientoEspecialista());
+		Usuario usuario3 = new Usuario("aslkdjaslkdjlk", sistema, new ConocimientoEspecialista());
+		Muestra muestra = new Muestra(usuario1, ubicacionMock, "Vinchuca", LocalDate.now(), fotoMock);
+		
+		usuario2.verificarMuestra(muestra, "Vinchuca");
+		usuario3.verificarMuestra(muestra, "Imagen poco clara");
+
+		
+		assertEquals("Indefinido", muestra.nivelDeVerificacion());
+	}
+
+
 
 
 }

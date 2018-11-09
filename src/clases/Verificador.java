@@ -31,7 +31,7 @@ public class Verificador {
 		List<Verificacion> verificacionesConMayorValor = verificacionesConMayorValor();
 		Set<String> tipos = tiposDeVinchucaSinRepeticiones(verificacionesConMayorValor);
 		
-		return tipos.size() == verificacionesConMayorValor.size();
+		return verificacionesConMayorValor.size() != 1 && tipos.size() == verificacionesConMayorValor.size();
 	}
 
 	private Set<String> tiposDeVinchucaSinRepeticiones(List<Verificacion> verificacionesConMayorValor) {
