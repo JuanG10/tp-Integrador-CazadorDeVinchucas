@@ -20,7 +20,7 @@ public class ConocimientoExperto implements NivelDeConocimiento {
 		if (cantMuestrasEnviadasEnElMes >= 10 && cantMuestrasVerificadasEnElMes >= 20) {
 			return this;
 		} else {
-			return new ConocimientoExperto();
+			return new ConocimientoBasico();
 		}
 	}
 

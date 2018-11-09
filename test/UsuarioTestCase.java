@@ -13,6 +13,7 @@ import interfaces.NivelDeConocimiento;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 class UsuarioTestCase {
 	Usuario usEspecialista;
@@ -51,9 +52,21 @@ class UsuarioTestCase {
 
 	}
 	
-	//@Test
+	@Test
 	void testUnUsuarioRecienCreadoRealiza20VerificacionesY10EnviosYSeVuelveExperto() {
 		
+		ArrayList<Muestra>lista = new ArrayList<Muestra>();
+		
+		for(int i=0; i<=20;i++) {
+			lista.add(muestra);
+		}
+		
+		when(sisWeb.muestras(usBasico)).thenReturn(lista);
+		when(muestra.fecha()).thenReturn(LocalDate.now());
+		
+		for(int i=0; i<=20;i++) {
+			usBasico.verificarMuestra(muestra, "chinche");
+		}
 	
 		assertEquals(nvlExp,usBasico.nivelDeConocimiento());
 	
