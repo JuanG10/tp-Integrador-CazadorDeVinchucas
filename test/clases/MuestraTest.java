@@ -10,6 +10,8 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
+import junit.framework.Assert;
+
 public class MuestraTest {
 	
 	private BufferedImage fotoMock;
@@ -44,9 +46,27 @@ public class MuestraTest {
 	}
 	
 	@Test
-	public void unaMuestraRecienCreadaTiene0Verificaciones() {
+	public void unaMuestraRecienCreadaTiene1Verificaciones() {
 		
-		assertEquals(new Integer(0), muestra.cantidadDeVerificaciones());
+		assertEquals(new Integer(1), muestra.cantidadDeVerificaciones());
+	}
+	
+	@Test
+	public void unaMuestraNoPuedeTenerMasDeTresVerificaciones() {
+		
+		Verificacion verificacion1mock = mock(Verificacion.class);
+		Verificacion verificacion2mock = mock(Verificacion.class);
+		Verificacion verificacion3mock = mock(Verificacion.class);
+		
+		muestra.serVerificada(verificacion1mock);
+		muestra.serVerificada(verificacion2mock);
+		try {
+			muestra.serVerificada(verificacion3mock);
+		}catch(Exception e){
+			Assert.assertEquals(e.getMessage(),"La muestra ya fue verificada tres veces");
+			
+		}
+		//REVISAR
 	}
 
 }
