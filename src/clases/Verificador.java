@@ -19,10 +19,14 @@ public class Verificador {
 		} else if(fueVerificadaPorExpertoOEspecialista()) {
 			muestra.setNivelDeVerificacion("Alto");
 		} else {
-			muestra.setNivelDeVerificacion(niveles[muestra.listaDeVerificaciones().size() - 1]);
+			muestra.setNivelDeVerificacion(niveles[cantidadDeVerificacionesIgualesALaOriginal() - 1]);
 		}
 	}
 	
+	private Integer cantidadDeVerificacionesIgualesALaOriginal() {
+		return (int) muestra.listaDeVerificaciones().stream().filter(verificacion -> muestra.tipoDeVinchuca().equals(verificacion.tipoVinchuca())).count();
+	}
+
 	private boolean hayDisension() {
 		List<Verificacion> verificacionesConMayorValor = verificacionesConMayorValor();
 		Set<String> tipos = tiposDeVinchucaSinRepeticiones(verificacionesConMayorValor);
