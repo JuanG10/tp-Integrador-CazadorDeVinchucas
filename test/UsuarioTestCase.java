@@ -61,7 +61,7 @@ class UsuarioTestCase {
 			lista.add(muestra);
 		}
 		
-		when(sisWeb.muestras(usBasico)).thenReturn(lista);
+		when(sisWeb.muestrasSegun(usBasico)).thenReturn(lista);
 		when(muestra.fecha()).thenReturn(LocalDate.now());
 		
 		for(int i=0; i<=20;i++) {
