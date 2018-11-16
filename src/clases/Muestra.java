@@ -15,7 +15,7 @@ public class Muestra {
 	private LocalDate fecha;
 	private Usuario usuario;
 	private List<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
-	private String nivelDeVerificacion;
+	private NivelDeVerificacion nivelDeVerificacion;
 	private Verificador verificador;
 	
 	public Muestra(Usuario usuario, Ubicacion ubicacion, Insectos vinchuca, LocalDate fecha, BufferedImage foto) {
@@ -53,8 +53,8 @@ public class Muestra {
 	public Ubicacion ubicacion() {
 		return ubicacion;
 	}
-	public Insectos tipoDeVinchuca() {
-		return tipoDeVinchuca;
+	public String tipoDeVinchuca() {
+		return tipoDeVinchuca.tipoDeInsecto();
 	}
 	public BufferedImage fotoVinchuca() {
 		return foto;
@@ -63,13 +63,13 @@ public class Muestra {
 		return listaDeVerificaciones;
 	}
 	public String nivelDeVerificacion() {
-		return nivelDeVerificacion;
+		return nivelDeVerificacion.nivelDeVerificacion();
 	}
 	
 	
 	//SETTERS
 	
-	public void setNivelDeVerificacion(String nivel) {
+	public void setNivelDeVerificacion(NivelDeVerificacion nivel) {
 		this.nivelDeVerificacion = nivel;
 	}
 }

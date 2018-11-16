@@ -7,7 +7,11 @@ import java.util.stream.Collectors;
 public class Verificador {
 	
 	private Muestra muestra;
-	public String[] niveles = {"Bajo", "Medio", "Alto"};
+	private NivelDeVerificacion bajo = new NivelDeVerificacion("Bajo");
+	private NivelDeVerificacion medio = new NivelDeVerificacion("Medio");
+	private NivelDeVerificacion alto = new NivelDeVerificacion("Alto");
+	
+	public NivelDeVerificacion[] niveles = { bajo, medio, alto};
 	
 	public Verificador(Muestra muestra) {
 		this.muestra = muestra;
@@ -15,9 +19,9 @@ public class Verificador {
 	
 	public void calcularNivelDeVerificacion() {
 		if(hayDisension()) {
-			muestra.setNivelDeVerificacion("Indefinido");
+			muestra.setNivelDeVerificacion(new NivelDeVerificacion("Indefinido"));
 		} else if(fueVerificadaPorExpertoOEspecialista()) {
-			muestra.setNivelDeVerificacion("Alto");
+			muestra.setNivelDeVerificacion(new NivelDeVerificacion("Alto"));
 		} else {
 			muestra.setNivelDeVerificacion(niveles[cantidadDeVerificacionesIgualesALaOriginal() - 1]);
 		}
