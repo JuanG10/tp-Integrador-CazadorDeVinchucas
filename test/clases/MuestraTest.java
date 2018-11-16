@@ -17,7 +17,7 @@ public class MuestraTest {
 	
 	private BufferedImage fotoMock;
 	private Ubicacion ubicacionMock;
-	private String tipoDeVinchuca;
+	private Insectos tipoDeVinchuca;
 	private LocalDate fecha;
 	private Usuario usuarioMock;
 	private Muestra muestraConMock;
@@ -34,7 +34,7 @@ public class MuestraTest {
 	public void setUp() throws Exception {
 		fotoMock = mock(BufferedImage.class);
 		ubicacionMock = mock(Ubicacion.class);
-		tipoDeVinchuca = "Imagen poco clara";
+		tipoDeVinchuca = new Insectos("Imagen poco clara");
 		fecha = LocalDate.now();
 		usuarioMock = mock(Usuario.class);
 		
@@ -49,7 +49,7 @@ public class MuestraTest {
 		usuarioExperto = new Usuario("Jorge el experto", sistema, new ConocimientoExperto());
 		usuarioEspecialista1 = new Usuario("Facu el especialista", sistema, new ConocimientoEspecialista());
 		usuarioEspecialista2 = new Usuario("Juan el especialista", sistema, new ConocimientoEspecialista());
-		muestra = new Muestra(usuarioBasico1, ubicacionMock, "Vinchuca", LocalDate.now(), fotoMock);
+		muestra = new Muestra(usuarioBasico1, ubicacionMock, tipoDeVinchuca, LocalDate.now(), fotoMock);
 	}
 
 	@Test
