@@ -24,7 +24,7 @@ public class Usuario {
 	}
 
 
-	public void verificarMuestra(Muestra muestra, String tipoDeVinchuca) {
+	public void verificarMuestra(Muestra muestra, Insectos tipoDeVinchuca) {
 		
 		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
 		

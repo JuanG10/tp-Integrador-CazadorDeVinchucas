@@ -2,9 +2,9 @@ package clases;
 
 public class Verificacion {
 	private Usuario usuario;
-	private String tipoVinchuca;
+	private Insectos tipoVinchuca;
 	
-	public Verificacion(Usuario usuario, String tipoDeVinchuca) {
+	public Verificacion(Usuario usuario, Insectos tipoDeVinchuca) {
 		this.usuario = usuario;
 		this.tipoVinchuca = tipoDeVinchuca;
 	}
@@ -14,7 +14,7 @@ public class Verificacion {
 	public Usuario usuario() {
 		return usuario;
 	}
-	public String tipoVinchuca(){
+	public Insectos tipoVinchuca(){
 		return tipoVinchuca;
 	}
 
