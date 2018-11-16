@@ -50,10 +50,10 @@ public class ZonaDeCoberturaTest {
 	public void unaZonaDeCoberturaSolapaConOtraSiLaDistanciaEntreSusEpicentrosEsMenorALaSumaDeSusRadios() {
 		
 		Ubicacion ubicacionA = new Ubicacion((double) 0, (double) 0);
-		ZonaDeCobertura zonaA = new ZonaDeCobertura("Zona A", ubicacionA, (double) 100);
+		ZonaDeCobertura zonaA = new ZonaDeCobertura("Zona A", ubicacionA, (double) 500);
 		
 		Ubicacion ubicacionB = new Ubicacion((double) 3, (double) 3);
-		ZonaDeCobertura zonaB = new ZonaDeCobertura("Zona B", ubicacionB, (double) 1);
+		ZonaDeCobertura zonaB = new ZonaDeCobertura("Zona B", ubicacionB, (double) 500);
 		
 		assertTrue(zonaA.solapaCon(zonaB));
 	}
