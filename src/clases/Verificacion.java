@@ -14,8 +14,8 @@ public class Verificacion {
 	public Usuario usuario() {
 		return usuario;
 	}
-	public Insectos tipoVinchuca(){
-		return tipoVinchuca;
+	public String tipoVinchuca(){
+		return tipoVinchuca.tipoDeInsecto();
 	}
 
 	public boolean esDefinitoria() {

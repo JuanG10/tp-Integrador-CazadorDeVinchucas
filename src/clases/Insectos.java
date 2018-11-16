@@ -9,4 +9,8 @@ public class Insectos {
 	public Insectos(String tipoDeVinchuca) {
 		this.tipoDeInsecto = tipoDeVinchuca;
 	}
+	
+	public String tipoDeInsecto() {
+		return this.tipoDeInsecto;
+	}
 }

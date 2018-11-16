@@ -29,12 +29,12 @@ public class Verificador {
 
 	private boolean hayDisension() {
 		List<Verificacion> verificacionesConMayorValor = verificacionesConMayorValor();
-		Set<Insectos> tipos = tiposDeVinchucaSinRepeticiones(verificacionesConMayorValor);
+		Set<String> tipos = tiposDeVinchucaSinRepeticiones(verificacionesConMayorValor);
 		
 		return verificacionesConMayorValor.size() != 1 && tipos.size() == verificacionesConMayorValor.size();
 	}
 
-	private Set<Insectos> tiposDeVinchucaSinRepeticiones(List<Verificacion> verificacionesConMayorValor) {
+	private Set<String> tiposDeVinchucaSinRepeticiones(List<Verificacion> verificacionesConMayorValor) {
 		return verificacionesConMayorValor.stream().map(verificacion 
 				-> verificacion.tipoVinchuca()).collect(Collectors.toSet());
 	}
