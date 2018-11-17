@@ -24,9 +24,9 @@ public class Usuario {
 	}
 
 
-	public void verificarMuestra(Muestra muestra, Insectos tipoDeVinchuca) {
+	public void verificarMuestra(Muestra muestra, Insectos insecto) {
 		
-		Verificacion verificacion = new Verificacion(this, tipoDeVinchuca);
+		Verificacion verificacion = new Verificacion(this, insecto);
 		
 		muestra.serVerificada(verificacion);
 		

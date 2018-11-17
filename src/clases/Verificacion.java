@@ -2,11 +2,11 @@ package clases;
 
 public class Verificacion {
 	private Usuario usuario;
-	private Insectos tipoVinchuca;
+	private Insectos insecto;
 	
 	public Verificacion(Usuario usuario, Insectos tipoDeVinchuca) {
 		this.usuario = usuario;
-		this.tipoVinchuca = tipoDeVinchuca;
+		this.insecto = tipoDeVinchuca;
 	}
 
 	//GETTERS
@@ -15,7 +15,7 @@ public class Verificacion {
 		return usuario;
 	}
 	public String tipoVinchuca(){
-		return tipoVinchuca.tipoDeInsecto();
+		return insecto.tipoDeInsecto();
 	}
 
 	public boolean esDefinitoria() {
