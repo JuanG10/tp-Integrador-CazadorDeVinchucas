@@ -25,6 +25,8 @@ class NivelDeConocimientoTest {
 	NivelDeConocimiento nvlBas;
 	SistemaWeb sisWeb;
 	Muestra muestra;
+	Insectos bicho3;
+	Insectos bicho4;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -36,6 +38,8 @@ class NivelDeConocimientoTest {
 		usExperto = new Usuario("JLF",sisWeb,nvlExp);
 		usBasico = new Usuario("FLJ",sisWeb);
 		muestra = mock(Muestra.class);
+		bicho3 = new Insectos("ChincheFoliada");
+		bicho4 = new Insectos("chinche");
 	}
 
 	@Test
@@ -48,7 +52,7 @@ class NivelDeConocimientoTest {
 		
 		when(muestra.fecha()).thenReturn(LocalDate.now());
 		assertEquals(nvlExp,usExperto.nivelDeConocimiento());
-		usExperto.verificarMuestra(muestra, "ChincheFoliada");
+		usExperto.verificarMuestra(muestra, bicho3);
 		assertEquals(nvlBas,usExperto.nivelDeConocimiento());
 
 	}
@@ -66,7 +70,7 @@ class NivelDeConocimientoTest {
 		when(muestra.fecha()).thenReturn(LocalDate.now());
 		
 		for(int i=0; i<=20;i++) {
-			usBasico.verificarMuestra(muestra, "chinche");
+			usBasico.verificarMuestra(muestra, bicho4);
 		}
 	
 		assertEquals(nvlExp,usBasico.nivelDeConocimiento());

@@ -62,3 +62,7 @@ public class Verificador {
 	}
 
 }
+
+
+
+//Lamdas and functional interfaces --> predicate

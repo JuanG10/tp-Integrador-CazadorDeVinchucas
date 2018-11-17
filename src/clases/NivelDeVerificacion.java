@@ -4,7 +4,7 @@ public class NivelDeVerificacion {
 
 	
 	//TypeObjectPattern
-	private String nivelDeVerificacion;
+	private String nivelDeVerificacion = "Bajo";
 	
 	public NivelDeVerificacion(String nivelDeVerificacion) {
 		this.nivelDeVerificacion = nivelDeVerificacion;

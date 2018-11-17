@@ -29,6 +29,8 @@ public class MuestraTest {
 	private Usuario usuarioEspecialista1;
 	private Usuario usuarioEspecialista2;
 	private Muestra muestra;
+	private Insectos bicho;
+	private Insectos bicho2;
 
 	@Before
 	public void setUp() throws Exception {
@@ -37,6 +39,8 @@ public class MuestraTest {
 		tipoDeVinchuca = new Insectos("Imagen poco clara");
 		fecha = LocalDate.now();
 		usuarioMock = mock(Usuario.class);
+		bicho = new Insectos("vinchuca");
+		bicho2 = new Insectos("Imagen poco clara");
 		
 		when(usuarioMock.alias()).thenReturn("Jorge");
 		
@@ -96,7 +100,7 @@ public class MuestraTest {
 	@Test
 	public void unaMuestraVerificadaPorUnUsuarioBasicoTieneNivelDeVerificacionMedio() {
 		
-		usuarioBasico2.verificarMuestra(muestra, "Vinchuca");
+		usuarioBasico2.verificarMuestra(muestra, bicho);
 		
 		assertEquals("Medio", muestra.nivelDeVerificacion());
 	}
@@ -104,8 +108,8 @@ public class MuestraTest {
 	@Test
 	public void unaMuestraVerificadaPorDosUsuariosBasicosTieneNivelDeVerificacionAlto() {
 		
-		usuarioBasico2.verificarMuestra(muestra, "Vinchuca");
-		usuarioBasico3.verificarMuestra(muestra, "Vinchuca");
+		usuarioBasico2.verificarMuestra(muestra, bicho);
+		usuarioBasico3.verificarMuestra(muestra, bicho);
 		
 		assertEquals("Alto", muestra.nivelDeVerificacion());
 	}
@@ -113,8 +117,8 @@ public class MuestraTest {
 	@Test
 	public void unaMuestraVerificadaPorDosUsuariosBasicosQueEstanDeAcuerdoYUnoQueNoTieneNivelDeVerificacionMedio() {
 		
-		usuarioBasico2.verificarMuestra(muestra, "Vinchuca");
-		usuarioBasico3.verificarMuestra(muestra, "Imagen poco clara");
+		usuarioBasico2.verificarMuestra(muestra, bicho);
+		usuarioBasico3.verificarMuestra(muestra, bicho2);
 		
 		assertEquals("Medio", muestra.nivelDeVerificacion());
 	}
@@ -122,7 +126,7 @@ public class MuestraTest {
 	@Test
 	public void unaMuestraVerificadaPorDosUsuariosBasicosQueNoEstanDeAcuerdoTieneNivelDeVerificacionIndefinido() {
 		
-		usuarioBasico2.verificarMuestra(muestra, "Imagen poco clara");
+		usuarioBasico2.verificarMuestra(muestra, bicho2);
 		
 		assertEquals("Indefinido", muestra.nivelDeVerificacion());
 	}
@@ -130,7 +134,7 @@ public class MuestraTest {
 	@Test
 	public void unaMuestraVerificadaPorUnUsuarioExpertoTieneNivelDeVerificacionAlto() {
 		
-		usuarioExperto.verificarMuestra(muestra, "Vinchuca");
+		usuarioExperto.verificarMuestra(muestra, bicho);
 		
 		assertEquals("Alto", muestra.nivelDeVerificacion());
 	}
@@ -138,7 +142,7 @@ public class MuestraTest {
 	@Test
 	public void unaMuestraVerificadaPorUnUsuarioEspecialistaTieneNivelDeVerificacionAlto() {
 		
-		usuarioEspecialista1.verificarMuestra(muestra, "Vinchuca");
+		usuarioEspecialista1.verificarMuestra(muestra, bicho);
 		
 		assertEquals("Alto", muestra.nivelDeVerificacion());
 	}
@@ -147,8 +151,8 @@ public class MuestraTest {
 	public void unaMuestraVerificadaPorDosEspecialistasQueNoEstanDeAcuerdoTieneNivelDeVerificacionIndefinido() {
 		
 		
-		usuarioEspecialista1.verificarMuestra(muestraConMock, "Vinchuca");
-		usuarioEspecialista2.verificarMuestra(muestraConMock, "Imagen poco clara");
+		usuarioEspecialista1.verificarMuestra(muestraConMock, bicho);
+		usuarioEspecialista2.verificarMuestra(muestraConMock, bicho2);
 
 		
 		assertEquals("Indefinido", muestraConMock.nivelDeVerificacion());
