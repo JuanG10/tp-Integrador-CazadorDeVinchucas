@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import interfaces.NivelDeConocimiento;
-
+//Comentario para comitear de prueba
 public class ConocimientoBasico implements NivelDeConocimiento {
 
 	@Override
