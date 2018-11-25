@@ -38,21 +38,23 @@ class OperadorTestCase {
 		and = new AND();
 		or = new OR();
 	}
-
+	
 	@Test
-	void testUnOperadorANDDevuelveLaInteresecciónEntreDosListasSiendoEstaSoloLaMuestra2() {
+	void testUnOperadorANDDevuelveLaIntereseccionEntreDosListasSiendoEstaSoloLaMuestra2() {
 		listaPrueba.add(muestra2);
 		
 		assertTrue(listaPrueba.containsAll(and.resolver(lista, lista2)));
 	}
 	
 	@Test
-	void testUnOperadorORDevuelveLaUniónDeDosListasEstandoLasMuestrasDeLa1ALa3() {
+	void testUnOperadorORDevuelveLaUnionDeDosListasEstandoLasMuestrasDeLa1ALa3() {
 		listaPrueba.add(muestra1);
 		listaPrueba.add(muestra2);
 		listaPrueba.add(muestra3);
 		
 		assertTrue(listaPrueba.containsAll(or.resolver(lista, lista2)));
 	}
+
+
 
 }
