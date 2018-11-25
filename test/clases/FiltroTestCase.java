@@ -35,7 +35,6 @@ class FiltroTestCase {
 
 	@Test
 	void testFiltraUnaListaBasadaEnIgualdadDeTiposDeInsectosPasandoElParametroVinchucaYQuedaSoloLaMuestraTresQueConteniaEseBicho(){
-		//Solo es una prueba, hay que ver como comparar clases que usen mensajes para compararse.
 		when(muestra1.tipoDeVinchuca()).thenReturn("Chinche");
 		when(muestra2.tipoDeVinchuca()).thenReturn("Facu");
 		when(muestra3.tipoDeVinchuca()).thenReturn("Vinchuca");
@@ -47,7 +46,6 @@ class FiltroTestCase {
 	
 	@Test
 	void testFiltraUnaListaBasadaEnSuFechaDeCreacionPasandoComoParametroLaFechaDeHoyYSoloQuedanLasMuestras2y3() {
-		//Solo es una prueba, hay que ver como comparar clases que usen mensajes para compararse.
 		when(muestra1.fecha()).thenReturn(LocalDate.now().minusDays(19));
 		when(muestra2.fecha()).thenReturn(LocalDate.now());
 		when(muestra3.fecha()).thenReturn(LocalDate.now());
@@ -59,7 +57,6 @@ class FiltroTestCase {
 	
 	@Test
 	void testFiltraUnaListaBasadaEnSuNivelDeVerificacionPasandoComoParametroElStringMedioYSoloQuedanLasMuestras1y2() {
-		//Solo es una prueba, hay que ver como comparar clases que usen mensajes para compararse.
 		when(muestra1.nivelDeVerificacion()).thenReturn("Medio");
 		when(muestra2.nivelDeVerificacion()).thenReturn("Medio");
 		when(muestra3.nivelDeVerificacion()).thenReturn("Alto");
