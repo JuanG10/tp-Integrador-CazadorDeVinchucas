@@ -33,7 +33,7 @@ public class Usuario {
 		muestrasVerificadas.add(muestra);
 		
 		
-		this.calcularNivelDeConocimiento();//pasar hoy como parametro.
+		this.calcularNivelDeConocimiento();
 	}
 	
 	

@@ -11,13 +11,12 @@ public class FiltroSimple implements Filtro {
 	private List<Muestra> listaMuestras;
 
 	public FiltroSimple(List<Muestra> lista) {
-		// TODO Auto-generated constructor stub
 		listaMuestras = lista;
 	}
 
 	@Override
 	public Filtro componer(Filtro f, Operador op) {
-		// TODO Auto-generated method stub
+		
 		return new FiltroCompuesto(this,op,f);
 	}
 	
