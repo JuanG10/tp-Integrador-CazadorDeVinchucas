@@ -2,7 +2,7 @@ package clases;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BooleanSupplier;
+
 
 public class ZonaDeCobertura {
 	
@@ -43,6 +43,10 @@ public class ZonaDeCobertura {
 
 	public Boolean solapaCon(ZonaDeCobertura zonaB) {
 		return this.distancia() + zonaB.distancia() >= this.epicentro().distanciaCon(zonaB.epicentro());
+	}
+
+	public boolean muestraEstaEnRango(Muestra muestra) {
+		return epicentro.distanciaCon(muestra.ubicacion())< this.distancia;
 	}
 
 }
