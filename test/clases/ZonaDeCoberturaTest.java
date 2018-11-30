@@ -6,6 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 
+import java.awt.image.BufferedImage;
+import java.time.LocalDate;
+
 public class ZonaDeCoberturaTest {
 	
 	private Ubicacion ubicacion;
@@ -131,6 +134,47 @@ public class ZonaDeCoberturaTest {
 		organizacion.removerZonaDeCobertura(zona);
 		
 		assertEquals(0, zona.organizacionesSuscritas().size());
+		
+	}
+	
+	@Test
+	public void unaZonaDeCoberturaNotificaAUnaOrganizacionDeUnaNuevaMuestra() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Ubicacion ubicacionA = new Ubicacion((double) 0, (double) 0);
+		ZonaDeCobertura zonaA = new ZonaDeCobertura("Zona A", ubicacionA, (double) 500);
+		Organizacion organizacion = mock(Organizacion.class);
+		doCallRealMethod().when(organizacion).registrarZonaDeCobertura(zonaA);
+		
+		sistema.registrarZonaDeCobertura(zonaA);
+		organizacion.registrarZonaDeCobertura(zonaA);
+			
+		Muestra muestra = new Muestra(mock(Usuario.class), ubicacionA, new Insectos("Imagen poco clara"), LocalDate.now(), mock(BufferedImage.class));
+		sistema.recibirMuestra(muestra);
+		
+		verify(organizacion, times(1)).nuevaMuestra(muestra);
+		
+	}
+	
+	@Test
+	public void unaZonaDeCoberturaNotificaAUnaOrganizacionDeUnaMuestraValidada() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuarioBasico = new Usuario("Jorge", sistema);
+		Ubicacion ubicacionA = new Ubicacion((double) 0, (double) 0);
+		ZonaDeCobertura zonaA = new ZonaDeCobertura("Zona A", ubicacionA, (double) 500);
+		Organizacion organizacion = mock(Organizacion.class);
+		doCallRealMethod().when(organizacion).registrarZonaDeCobertura(zonaA);
+		
+		sistema.registrarZonaDeCobertura(zonaA);
+		organizacion.registrarZonaDeCobertura(zonaA);
+			
+		Muestra muestra = new Muestra(usuarioBasico, ubicacionA, new Insectos("Imagen poco clara"), LocalDate.now(), mock(BufferedImage.class));
+		sistema.recibirMuestra(muestra);
+		
+		usuarioBasico.verificarMuestra(muestra, new Insectos("Imagen poco clara"));
+		
+		verify(organizacion, times(1)).muestraValidada(muestra);
 		
 	}
 }
