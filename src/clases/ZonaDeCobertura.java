@@ -37,6 +37,10 @@ public class ZonaDeCobertura {
 		return distancia;
 	}
 	
+	public List<Organizacion> organizacionesSuscritas() {
+		return organizacionesSuscritas;
+	}
+	
 	public void registrarMuestra(Muestra muestra) {
 		muestrasEnRango.add(muestra);
 		muestra.registrarZona(this);
@@ -52,7 +56,7 @@ public class ZonaDeCobertura {
 	}
 
 	public List<ZonaDeCobertura> zonasQueSolapan() {
-		return null;
+		return zonasQueSolapan;
 	}
 	
 	public void evaluarMuestra(Muestra muestra) {

@@ -6,7 +6,7 @@ import java.util.List;
 
 import interfaces.FuncionalidadExterna;
 
-public abstract class Organizacion{
+public class Organizacion{
 
 	private String tipoDeOrganizacion;
 	private Ubicacion ubicacion;

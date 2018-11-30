@@ -1,20 +1,21 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
 
 public class SistemaWeb {
 
-	private ArrayList<Muestra> muestras = new ArrayList<Muestra>();
-	private ArrayList<ZonaDeCobertura> zonas = new ArrayList<ZonaDeCobertura>();
+	private List<Muestra> muestras = new ArrayList<Muestra>();
+	private List<ZonaDeCobertura> zonas = new ArrayList<ZonaDeCobertura>();
 	
-	public ArrayList<Muestra> muestras(){
+	public List<Muestra> muestras(){
 		return muestras;
 	}
 	
-	public ArrayList<Muestra> muestrasSegun(Usuario usuario){
+	public List<Muestra> muestrasSegun(Usuario usuario){
 		ArrayList<Muestra> muestrasFiltradas = 
 			(ArrayList<Muestra>) muestras.stream().filter(muestra -> muestra.aliasDeUsuario() == usuario.alias()).collect(Collectors.toList());
 		
