@@ -38,6 +38,13 @@ public class Organizacion{
 	
 	//FUNCIONALIDAD EXTERNA
 	
+	public FuncionalidadExterna getFuncionalidadExternaParaCarga() {
+		return this.funcionalidadExternaParaCargaDeMuestras;
+	}
+	public FuncionalidadExterna getFuncionalidadExternaParaValidacion() {
+		return this.funcionalidadExternaParaValidacionDeMuestras;
+	}
+	
 	public void setFuncionalidadExternaParaCarga(FuncionalidadExterna funcionalidad) {
 		this.funcionalidadExternaParaCargaDeMuestras = funcionalidad;
 	}
