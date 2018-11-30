@@ -1,10 +1,8 @@
 package clases;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
-import org.junit.Before;
-import org.junit.Test;
 
 import interfaces.NivelDeConocimiento;
 
@@ -15,7 +13,7 @@ public class UsuarioTest {
 	private NivelDeConocimiento nivel;
 	private Usuario usuario;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		alias = "Jorge";
 		sistema = mock(SistemaWeb.class);

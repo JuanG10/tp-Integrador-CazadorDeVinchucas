@@ -1,16 +1,12 @@
 package clases;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDate;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import junit.framework.Assert;
 
 @SuppressWarnings("deprecation")
 public class MuestraTest {
@@ -31,7 +27,7 @@ public class MuestraTest {
 	private Muestra muestra;
 	private Insectos vinchuca;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		fotoMock = mock(BufferedImage.class);
 		ubicacionMock = mock(Ubicacion.class);
@@ -84,7 +80,7 @@ public class MuestraTest {
 		try {
 			muestraConMock.serVerificada(verificacion3mock);
 		}catch(Exception e){
-			Assert.assertEquals(e.getMessage(),"La muestra ya fue verificada tres veces");
+			assertEquals(e.getMessage(),"La muestra ya fue verificada tres veces");
 			
 		}
 	}
