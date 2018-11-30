@@ -4,7 +4,7 @@ import clases.Muestra;
 import clases.Organizacion;
 import clases.ZonaDeCobertura;
 
-public interface FuncionalidadExtenerna {
+public interface FuncionalidadExterna {
 
 	public void nuevoEvento(Organizacion org, ZonaDeCobertura zona, Muestra muestra);
 

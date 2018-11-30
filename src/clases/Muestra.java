@@ -17,6 +17,7 @@ public class Muestra {
 	private List<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
 	private NivelDeVerificacion nivelDeVerificacion;
 	private Verificador verificador;
+	private List<ZonaDeCobertura> zonasPresentes;
 	
 	public Muestra(Usuario usuario, Ubicacion ubicacion, Insectos vinchuca, LocalDate fecha, BufferedImage foto) {
 		this.usuario = usuario;
@@ -26,6 +27,7 @@ public class Muestra {
 		this.foto = foto;
 		this.verificador = new Verificador(this);
 		this.listaDeVerificaciones = new ArrayList<>();
+		this.zonasPresentes = new ArrayList<>();
 		
 		this.serVerificada(new Verificacion(usuario, vinchuca));
 	}
@@ -34,9 +36,18 @@ public class Muestra {
 		if (cantidadDeVerificaciones()< 3) {
 			listaDeVerificaciones.add(verificacion);
 			verificador.calcularNivelDeVerificacion();
+			notificarValidacion();
 		} else {
 			throw new RuntimeException("La muestra ya fue verificada tres veces");
 		}
+	}
+	
+	public void registrarZona(ZonaDeCobertura zona) {
+		zonasPresentes.add(zona);
+	}
+	
+	private void notificarValidacion() {
+		zonasPresentes.stream().forEach(zona -> zona.muestraValidada(this));
 	}
 	
 	//GETTERS

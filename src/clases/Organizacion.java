@@ -2,17 +2,17 @@ package clases;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
-import interfaces.FuncionalidadExtenerna;
+import interfaces.FuncionalidadExterna;
 
 public abstract class Organizacion{
 
 	private String tipoDeOrganizacion;
 	private Ubicacion ubicacion;
 	private Integer cantPersonas;
-	private ArrayList <ZonaDeCobertura> zonasDeCobertura = new ArrayList<ZonaDeCobertura>();
-	private FuncionalidadExtenerna funcionalidadExternaParaCargaDeMuestras;
-	private FuncionalidadExtenerna funcionalidadExternaParaValidacionDeMuestras;
+	private FuncionalidadExterna funcionalidadExternaParaCargaDeMuestras;
+	private FuncionalidadExterna funcionalidadExternaParaValidacionDeMuestras;
 	
 	public Organizacion(String tipo, Ubicacion ubicacion, Integer cantPersonas) {
 		this.tipoDeOrganizacion = tipo;
@@ -21,19 +21,27 @@ public abstract class Organizacion{
 	}
 	
 	public void registrarZonaDeCobertura(ZonaDeCobertura zona) {
-		this.zonasDeCobertura.add(zona);
+		zona.suscribirOrganizacion(this);
 	}
 	public void removerZonaDeCobertura(ZonaDeCobertura zona) {
-		this.zonasDeCobertura.remove(zona);
+		zona.desuscribirOrganizacion(this);
+	}
+	
+	public void nuevaMuestra(Muestra muestra) {
+		aplicarFuncionalidadExternaPorCargaDeMuestra();
+	}
+	
+	public void muestraValidada(Muestra muestra) {
+		aplicarFuncionalidadExternaPorValidacionDeMuestra();
 	}
 	
 	
 	//FUNCIONALIDAD EXTERNA
 	
-	public void setFuncionalidadExternaParaCarga(FuncionalidadExtenerna funcionalidad) {
+	public void setFuncionalidadExternaParaCarga(FuncionalidadExterna funcionalidad) {
 		this.funcionalidadExternaParaCargaDeMuestras = funcionalidad;
 	}
-	public void setFuncionalidadExternaParaValidacion(FuncionalidadExtenerna funcionalidad) {
+	public void setFuncionalidadExternaParaValidacion(FuncionalidadExterna funcionalidad) {
 		this.funcionalidadExternaParaValidacionDeMuestras = funcionalidad;
 	}
 	private void aplicarFuncionalidadExternaPorCargaDeMuestra() {
