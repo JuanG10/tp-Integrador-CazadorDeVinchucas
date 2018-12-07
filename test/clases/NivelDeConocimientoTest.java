@@ -10,6 +10,7 @@ import clases.Muestra;
 import clases.SistemaWeb;
 import clases.Usuario;
 import interfaces.NivelDeConocimiento;
+import clases.Insecto;
 
 import static org.mockito.Mockito.*;
 
@@ -25,8 +26,8 @@ class NivelDeConocimientoTest {
 	NivelDeConocimiento nvlBas;
 	SistemaWeb sisWeb;
 	Muestra muestra;
-	Insectos bicho3;
-	Insectos bicho4;
+	Insecto bicho3;
+	Insecto bicho4;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -38,8 +39,8 @@ class NivelDeConocimientoTest {
 		usExperto = new Usuario("JLF",sisWeb,nvlExp);
 		usBasico = new Usuario("FLJ",sisWeb);
 		muestra = mock(Muestra.class);
-		bicho3 = new Insectos("ChincheFoliada");
-		bicho4 = new Insectos("chinche");
+		bicho3 = new Insecto("ChincheFoliada");
+		bicho4 = new Insecto("chinche");
 	}
 
 	@Test
@@ -75,6 +76,19 @@ class NivelDeConocimientoTest {
 	
 		assertEquals(nvlExp,usBasico.nivelDeConocimiento());
 	
+	}
+	
+	@Test
+	void testLosNivelesDeConocimientoSeComparanPorEquals() {
+		assertEquals(nvlEsp,nvlEsp);
+		assertNotEquals(nvlEsp,null);
+		assertEquals(nvlEsp,new ConocimientoEspecialista());
+		assertEquals(nvlBas,nvlBas);
+		assertNotEquals(nvlBas,null);
+		assertEquals(nvlBas,new ConocimientoBasico());
+		assertEquals(nvlExp,nvlExp);
+		assertNotEquals(nvlExp,null);
+		assertEquals(nvlExp,new ConocimientoExperto());
 	}
 
 }

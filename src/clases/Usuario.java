@@ -24,7 +24,7 @@ public class Usuario {
 	}
 
 
-	public void verificarMuestra(Muestra muestra, Insectos insecto) {
+	public void verificarMuestra(Muestra muestra, Insecto insecto) {
 		
 		Verificacion verificacion = new Verificacion(this, insecto);
 		

@@ -11,14 +11,14 @@ public class Muestra {
 	
 	private BufferedImage foto;
 	private Ubicacion ubicacion;
-	private Insectos tipoDeVinchuca;
+	private Insecto tipoDeVinchuca;
 	private LocalDate fecha;
 	private Usuario usuario;
 	private List<Verificacion> listaDeVerificaciones = new ArrayList<Verificacion>();
 	private NivelDeVerificacion nivelDeVerificacion;
 	private Verificador verificador;
 	
-	public Muestra(Usuario usuario, Ubicacion ubicacion, Insectos vinchuca, LocalDate fecha, BufferedImage foto) {
+	public Muestra(Usuario usuario, Ubicacion ubicacion, Insecto vinchuca, LocalDate fecha, BufferedImage foto) {
 		this.usuario = usuario;
 		this.ubicacion = ubicacion;
 		this.tipoDeVinchuca = vinchuca;

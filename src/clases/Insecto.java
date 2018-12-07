@@ -1,12 +1,12 @@
 package clases;
 
-public class Insectos {
+public class Insecto {
 
 	//TypeObjectPatern
 	
 	private String tipoDeInsecto;
 	
-	public Insectos(String tipoDeVinchuca) {
+	public Insecto(String tipoDeVinchuca) {
 		this.tipoDeInsecto = tipoDeVinchuca;
 	}
 	

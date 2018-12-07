@@ -35,7 +35,7 @@ public class UsuarioTest {
 	public void unUsuarioVerificaUnaMuestraYEstaSeAgregaASusMuestrasVerificadas() {
 		
 		Muestra muestraMock = mock(Muestra.class);
-		Insectos vinchuca = new Insectos("Imagen poco clara");
+		Insecto vinchuca = new Insecto("Imagen poco clara");
 		
 		usuario.verificarMuestra(muestraMock, vinchuca);
 		

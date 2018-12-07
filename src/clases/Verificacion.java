@@ -2,9 +2,9 @@ package clases;
 
 public class Verificacion {
 	private Usuario usuario;
-	private Insectos insecto;
+	private Insecto insecto;
 	
-	public Verificacion(Usuario usuario, Insectos tipoDeVinchuca) {
+	public Verificacion(Usuario usuario, Insecto tipoDeVinchuca) {
 		this.usuario = usuario;
 		this.insecto = tipoDeVinchuca;
 	}

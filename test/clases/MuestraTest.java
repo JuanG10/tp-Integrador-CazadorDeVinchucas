@@ -17,7 +17,7 @@ public class MuestraTest {
 	
 	private BufferedImage fotoMock;
 	private Ubicacion ubicacionMock;
-	private Insectos imagenPocoClara;
+	private Insecto imagenPocoClara;
 	private LocalDate fecha;
 	private Usuario usuarioMock;
 	private Muestra muestraConMock;
@@ -29,16 +29,16 @@ public class MuestraTest {
 	private Usuario usuarioEspecialista1;
 	private Usuario usuarioEspecialista2;
 	private Muestra muestra;
-	private Insectos vinchuca;
+	private Insecto vinchuca;
 
 	@Before
 	public void setUp() throws Exception {
 		fotoMock = mock(BufferedImage.class);
 		ubicacionMock = mock(Ubicacion.class);
-		imagenPocoClara = new Insectos("Imagen poco clara");
+		imagenPocoClara = new Insecto("Imagen poco clara");
 		fecha = LocalDate.now();
 		usuarioMock = mock(Usuario.class);
-		vinchuca = new Insectos("Vinchuca");
+		vinchuca = new Insecto("Vinchuca");
 		
 		when(usuarioMock.alias()).thenReturn("Jorge");
 		
