@@ -1,7 +1,7 @@
 package clases;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,14 +41,16 @@ class OperadorTestCase {
 	}
 
 	@Test
-	void testUnOperadorANDDevuelveLaInteresecciónEntreDosListasSiendoEstaSoloLaMuestra2() {
+	void testUnOperadorANDDevuelveLaIntereseccionEntreDosListasSiendoEstaSoloLaMuestra2() {
+
 		listaPrueba.add(muestra2);
 		
 		assertTrue(listaPrueba.containsAll(and.resolver(lista, lista2)));
 	}
 	
 	@Test
-	void testUnOperadorORDevuelveLaUniónDeDosListasEstandoLasMuestrasDeLa1ALa3() {
+	void testUnOperadorORDevuelveLaUnionDeDosListasEstandoLasMuestrasDeLa1ALa3() {
+
 		listaPrueba.add(muestra1);
 		listaPrueba.add(muestra2);
 		listaPrueba.add(muestra3);

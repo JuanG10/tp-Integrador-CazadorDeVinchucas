@@ -7,6 +7,7 @@ import clases.Muestra;
 import interfaces.Filtro;
 import interfaces.Operador;
 
+
 public interface Filtro {
 	public Filtro componer(Filtro f,Operador op);
 	public List<Muestra> filtrar(Predicate<Muestra> algo);

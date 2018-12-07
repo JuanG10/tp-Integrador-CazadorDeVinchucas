@@ -6,6 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 
+import java.awt.image.BufferedImage;
+import java.time.LocalDate;
+
 public class ZonaDeCoberturaTest {
 	
 	private Ubicacion ubicacion;
@@ -78,8 +81,100 @@ public class ZonaDeCoberturaTest {
 		} catch (Exception e) {
 			assertEquals("No se puede instanciar una zona de cobertura con distancia cero", e.getMessage());
 		}
+	}
+	
+	@Test
+	public void unaUnicaZonaEnUnSistemaSoloSolapaConsigoMisma() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		
+		Ubicacion ubicacionA = new Ubicacion((double) 0, (double) 0);
+		ZonaDeCobertura zonaA = new ZonaDeCobertura("Zona A", ubicacionA, (double) 500);
+			
+		sistema.registrarZonaDeCobertura(zonaA);
+		
+		assertEquals(1, zonaA.zonasQueSolapan().size());
+	}
+	
+	@Test
+	public void unaZonaDeCoberturaConoceAutomaticamenteAUnaZonaSolapadaQueIngresaASuSistema() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		
+		Ubicacion ubicacionA = new Ubicacion((double) 0, (double) 0);
+		ZonaDeCobertura zonaA = new ZonaDeCobertura("Zona A", ubicacionA, (double) 500);
+		
+		Ubicacion ubicacionB = new Ubicacion((double) 3, (double) 3);
+		ZonaDeCobertura zonaB = new ZonaDeCobertura("Zona B", ubicacionB, (double) 500);
+		
+		sistema.registrarZonaDeCobertura(zonaA);
+		sistema.registrarZonaDeCobertura(zonaB);
+		
+		assertEquals(2, zonaA.zonasQueSolapan().size());
+	}
+	
+	@Test
+	public void unaZonaDeCoberturaSuscribeAUnaOrganizacion() {
+		
+		Ubicacion ubicacionA = new Ubicacion((double) 0, (double) 0);
+		Organizacion organizacion = new Organizacion("Gubernamental", ubicacionA, 10);
+		
+		organizacion.registrarZonaDeCobertura(zona);
+		
+		assertEquals(1, zona.organizacionesSuscritas().size());
+	}
+	
+	@Test
+	public void unaZonaDeCoberturaDesuscribeAUnaOrganizacion() {
+		
+		Ubicacion ubicacionA = new Ubicacion((double) 0, (double) 0);
+		Organizacion organizacion = new Organizacion("Gubernamental", ubicacionA, 10);
+		
+		organizacion.registrarZonaDeCobertura(zona);
+		organizacion.removerZonaDeCobertura(zona);
+		
+		assertEquals(0, zona.organizacionesSuscritas().size());
 		
 	}
-
-
+	
+	@Test
+	public void unaZonaDeCoberturaNotificaAUnaOrganizacionDeUnaNuevaMuestra() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Ubicacion ubicacionA = new Ubicacion((double) 0, (double) 0);
+		ZonaDeCobertura zonaA = new ZonaDeCobertura("Zona A", ubicacionA, (double) 500);
+		Organizacion organizacion = mock(Organizacion.class);
+		doCallRealMethod().when(organizacion).registrarZonaDeCobertura(zonaA);
+		
+		sistema.registrarZonaDeCobertura(zonaA);
+		organizacion.registrarZonaDeCobertura(zonaA);
+			
+		Muestra muestra = new Muestra(mock(Usuario.class), ubicacionA, new Insecto("Imagen poco clara"), LocalDate.now(), mock(BufferedImage.class));
+		sistema.recibirMuestra(muestra);
+		
+		verify(organizacion, times(1)).nuevaMuestra(muestra);
+		
+	}
+	
+	@Test
+	public void unaZonaDeCoberturaNotificaAUnaOrganizacionDeUnaMuestraValidada() {
+		
+		SistemaWeb sistema = new SistemaWeb();
+		Usuario usuarioBasico = new Usuario("Jorge", sistema);
+		Ubicacion ubicacionA = new Ubicacion((double) 0, (double) 0);
+		ZonaDeCobertura zonaA = new ZonaDeCobertura("Zona A", ubicacionA, (double) 500);
+		Organizacion organizacion = mock(Organizacion.class);
+		doCallRealMethod().when(organizacion).registrarZonaDeCobertura(zonaA);
+		
+		sistema.registrarZonaDeCobertura(zonaA);
+		organizacion.registrarZonaDeCobertura(zonaA);
+			
+		Muestra muestra = new Muestra(usuarioBasico, ubicacionA, new Insecto("Imagen poco clara"), LocalDate.now(), mock(BufferedImage.class));
+		sistema.recibirMuestra(muestra);
+		
+		usuarioBasico.verificarMuestra(muestra, new Insecto("Imagen poco clara"));
+		
+		verify(organizacion, times(1)).muestraValidada(muestra);
+		
+	}
 }

@@ -22,17 +22,14 @@ public class FiltroCompuesto implements Filtro {
 
 	@Override
 	public Filtro componer(Filtro f, Operador op) {
-		// TODO Auto-generated method stub
 		return new FiltroCompuesto(this, op, f);
 	}
 
 	@Override
 	public List<Muestra> filtrar(Predicate<Muestra> parametro) {
-		// TODO Auto-generated method stub
 		List<Muestra> lista1 = f1.filtrar(parametro);
 		List<Muestra> lista2 = f2.filtrar(parametro);
 		return op.resolver(lista1, lista2);
 	}
 
 }
-

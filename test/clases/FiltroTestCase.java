@@ -1,8 +1,7 @@
 package clases;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ import clases.OR;
 import interfaces.Filtro;
 import interfaces.Operador;
 
+
 class FiltroTestCase {
 	List<Muestra> listaPrueba;
 	Muestra muestra1;
@@ -30,6 +30,7 @@ class FiltroTestCase {
 	Operador and;
 	Operador or;
 	Predicate<Muestra> p1;
+
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -89,6 +90,7 @@ class FiltroTestCase {
 		Filtro filtroCompuesto = new FiltroCompuesto(filtroSimple, or, filtroSimple2);
 		
 		assertEquals(6,filtroCompuesto.componer(filtroSimple, or).filtrar(p1).size());
+
 	}
 
 

@@ -1,17 +1,14 @@
 package clases;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-
 public class SistemaWebTest {
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 	}
 
